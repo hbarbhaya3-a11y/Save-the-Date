@@ -49,7 +49,7 @@ fit();
 function buildText() {
   $("monthName").textContent = MONTHS[CONFIG.month - 1];
   $("yearName").textContent = CONFIG.year;
-  $("coupleNames").textContent = `${CONFIG.groom} & ${CONFIG.bride}`;
+  $("coupleNames").innerHTML = `${CONFIG.groom}<span class="amp">&amp;</span>${CONFIG.bride}`;
   document.querySelector(".logo__H").textContent = CONFIG.initials[0];
   document.querySelector(".logo__S").textContent = CONFIG.initials[1];
   document.querySelector(".logo__names").textContent = `${CONFIG.groom} & ${CONFIG.bride}`;

@@ -218,18 +218,18 @@ body::before {
 /* wedding-of */
 .wedding-of { position: absolute; left: 0; width: 540px; top: 478px; text-align: center; }
 .wedding-of__label {
-  font-family: "Cinzel", serif; font-weight: 500;
-  font-size: 27px; letter-spacing: .5px;
-  color: var(--rose);
+  font-family: "Cormorant Garamond", serif; font-weight: 600;
+  font-size: 19px; letter-spacing: 6px; margin-right: -6px;
+  color: #7a2a35;
   min-height: 34px;
 }
 .wedding-of__label .ch { display: inline-block; opacity: 0; transform: translateY(6px); transition: opacity .4s ease, transform .4s ease; white-space: pre; }
 .wedding-of__label .ch.in { opacity: 1; transform: none; }
 .wedding-of__names {
-  margin-top: 6px;
-  font-family: "Pinyon Script", cursive;
-  font-size: 32px;
-  color: var(--rose-soft);
+  margin-top: -2px;
+  font-family: "Great Vibes", cursive;
+  font-size: 64px; line-height: 1.15;
+  color: #6b1622;
   clip-path: inset(0 100% 0 0);
   transition: clip-path 1.4s cubic-bezier(.45, .05, .35, 1);
 }
@@ -439,3 +439,5 @@ body::before {
   -webkit-mask-image: linear-gradient(to top, #000 45%, transparent 98%), linear-gradient(to right, transparent 2%, #000 40%);
           mask-image: linear-gradient(to top, #000 45%, transparent 98%), linear-gradient(to right, transparent 2%, #000 40%);
 }
+
+.wedding-of__names .amp { font-family: "Cormorant Garamond", serif; font-style: italic; font-size: 30px; margin: 0 8px; color: #7a2a35; }
