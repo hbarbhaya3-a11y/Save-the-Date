@@ -275,37 +275,37 @@ function play() {
   });
 
   // "FOR THE WEDDING OF" + names
-  labelChars.forEach((ch, i) => at(12.6 + i * 0.055, () => ch.classList.add("in")));
-  at(13.7, () => $("coupleNames").classList.add("in"));
+  labelChars.forEach((ch, i) => at(12.5 + i * 0.06, () => ch.classList.add("in")));
+  at(13.5, () => $("coupleNames").classList.add("in"));
 
   // scene 1 exit (reverse-ish stagger, like the original)
-  at(16.2, () => arcChars.forEach((ch, i) => setTimeout(() => ch.classList.add("out"), i * 45)));
-  at(16.35, () => { monthEl.classList.add("out"); yearEl.classList.add("out"); });
-  at(16.6, () => { cal.classList.add("out"); heart.classList.add("out"); });
-  at(16.6, () => { $("weddingLabel").classList.add("out"); $("coupleNames").classList.add("out"); });
-  at(16.5, () => document.querySelector(".ground--s1").classList.add("out"));
+  at(17.7, () => arcChars.forEach((ch, i) => setTimeout(() => ch.classList.add("out"), i * 45)));
+  at(17.85, () => { monthEl.classList.add("out"); yearEl.classList.add("out"); });
+  at(18.1, () => { cal.classList.add("out"); heart.classList.add("out"); });
+  at(18.1, () => { $("weddingLabel").classList.add("out"); $("coupleNames").classList.add("out"); });
+  at(18.0, () => document.querySelector(".ground--s1").classList.add("out"));
 
   /* ---- Scene 2 ---- */
-  at(17.3, () => {
+  at(18.8, () => {
     $("scene1").classList.remove("is-active");
     $("scene2").classList.add("is-active");
     heart.classList.remove("out");
     heart.getAnimations().forEach((a) => a.cancel());
     heart.style.opacity = 0;
   });
-  at(17.35, () => { $("monogram").classList.add("in"); $("logoMain").classList.add("in"); document.querySelector(".ground--s2").classList.add("in"); });
-  typeInto($("typeSTD"), "Save the Date", 0.11, 18.0);
+  at(18.85, () => { $("monogram").classList.add("in"); $("logoMain").classList.add("in"); document.querySelector(".ground--s2").classList.add("in"); });
+  typeInto($("typeSTD"), "Save the Date", 0.11, 19.5);
   const dateStr = `${CONFIG.day} . ${MONTHS[CONFIG.month - 1].slice(0, 3)} . ${CONFIG.year}`;
-  typeInto($("typeDate"), dateStr, 0.1, 19.55);
+  typeInto($("typeDate"), dateStr, 0.1, 21.05);
 
   // ending
-  at(23.9, () => {
+  at(25.4, () => {
     $("monogram").classList.add("out");
     document.querySelector(".ground--s2").classList.add("out");
     $("typeSTD").classList.add("out");
     $("typeDate").classList.add("out");
   });
-  at(24.7, () => {
+  at(26.2, () => {
     if (CONFIG.loop) play();
     else $("replayBtn").classList.add("show");
   });

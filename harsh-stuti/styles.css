@@ -231,7 +231,7 @@ body::before {
   font-size: 64px; line-height: 1.15;
   color: #6b1622;
   clip-path: inset(-50% 100% -50% -5%);
-  transition: clip-path 1.4s cubic-bezier(.45, .05, .35, 1);
+  transition: clip-path 3.2s cubic-bezier(.3, .2, .6, .9);
 }
 .wedding-of__names.in { clip-path: inset(-50% -5% -50% -5%); }
 .wedding-of__label.out, .wedding-of__names.out { opacity: 0; transition: opacity .45s ease; }
@@ -377,7 +377,7 @@ body::before {
 .has-skyline .art--skyline { display: block; left: -50px; bottom: -6px; width: 640px; }
 
 .has-couple .ground__couple { display: none; }
-.has-couple .art--couple { display: block; left: 50%; bottom: -30px; height: calc(428px + min(0px, var(--stage-h) - 960px) * .6); transform: translateX(-50%); }
+.has-couple .art--couple { display: block; left: 50%; bottom: 8px; height: calc(398px + min(0px, var(--stage-h) - 960px) * .6); transform: translateX(-50%); }
 
 .has-florals .monogram .spray { display: none; }
 .has-florals .art--mono-floral { display: block; left: 300px; top: -14px; width: 190px; transform: scaleX(-1) rotate(-8deg); }

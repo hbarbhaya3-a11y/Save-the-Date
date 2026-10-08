@@ -2,7 +2,7 @@
 
 Live: https://hbarbhaya3-a11y.github.io/Save-the-Date/harsh-stuti/
 
-This invitation uses the same structure and flow as the original reel (see the [main README](../README.md)). It has two scenes, about 25 s, at 9:16:
+This invitation uses the same structure and flow as the original reel (see the [main README](../README.md)). It has two scenes, about 26 s, at 9:16:
 
 1. **Calendar:** "Save the Date" appears letter by letter on an arc. Then NOVEMBER 2026 and the calendar come in, a heart hops across the dates onto the **30th**, and "FOR THE WEDDING OF / Harsh & Stuti" reveals. The illustrated couple stands in front of the Jain temple and Roots Cafe photos.
 2. **Monogram:** the H & S logo draws in. "Save the Date" and "30 . NOV . 2026" type out over the same temple and cafe backdrop.
