@@ -6,6 +6,13 @@ An animated, mobile-first (9:16) wedding "Save the Date" invitation. It is built
 
 Open `index.html` in a browser, or publish the repo with **GitHub Pages**: *Settings → Pages → Deploy from branch*.
 
+## Mobile & reels
+
+- **Phones:** the invitation fills the screen edge to edge on phones, including inside the Instagram and WhatsApp browsers. On desktop it sits centred on a blurred watercolour backdrop.
+- **Link preview:** sharing the link on WhatsApp, Instagram or iMessage shows a card with the monogram (`assets/og.jpg`).
+- **Reel video:** `save-the-date-reel.mp4` is a 1080×1920, 30 fps, ~25 s MP4 ready to upload as an Instagram Reel, WhatsApp Status or YouTube Short. Add the music in the Instagram editor.
+- **Recording mode:** open the page with `#reel` at the end of the URL for a clean 9:16 frame that loops and hides the buttons, which is useful for screen recording.
+
 ## Timeline (~25 s)
 
 | Time | Scene 1: calendar |
@@ -38,15 +45,15 @@ The page uses painted watercolour artwork from `assets/art/` when those files ar
 
 | File | What it is |
 |------|------------|
-| `background.jpg` | watercolour paper background (9:16) |
-| `couple.png` | bride and groom |
-| `skyline.png` | temple and Bhilai steel-plant skyline |
-| `florals.png` | peach flower corner |
+| `background.webp` | watercolour paper background (9:16) |
+| `couple.webp` | bride and groom |
+| `skyline.webp` | temple and Bhilai steel-plant skyline |
+| `florals.webp` | peach flower corner |
 
 To turn a painting on a white background into a transparent PNG:
 
 ```
-python3 tools/prepare_art.py couple-from-canva.jpg assets/art/couple.png
+python3 tools/prepare_art.py couple-from-canva.jpg assets/art/couple.webp
 ```
 
 ## Music (optional)

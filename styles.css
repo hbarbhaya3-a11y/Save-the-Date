@@ -1,6 +1,9 @@
 /* =========================================================
    Save the Date – animated invitation
-   Stage is authored at 540 × 960 (9:16) and scaled to fit.
+   Stage is authored at 540 × 960 (9:16) and scaled to the screen width.
+   On taller phones the stage grows taller (--stage-h) so it fills the
+   screen edge to edge; the text block shifts down by --shift and the
+   illustrated ground stays anchored to the bottom.
    ========================================================= */
 
 :root {
@@ -12,36 +15,53 @@
   --copper-soft: #a87457;
   --heart: #ee2f37;
   --scale: 1;
+  --stage-h: 960px;
+  --shift: 0px;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 html, body {
   height: 100%;
-  background: #1c1714;
   overflow: hidden;
+  overscroll-behavior: none;
   -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* letterbox (desktop / landscape): blurred painting instead of flat bars */
+body {
+  background: #efe4d6 url("assets/art/background.webp") center / cover no-repeat;
+}
+body::before {
+  content: "";
+  position: fixed; inset: -40px;
+  background: inherit;
+  filter: blur(24px) saturate(1.1);
+  opacity: .9;
 }
 
 .viewport {
   position: fixed;
   inset: 0;
-  display: grid;
-  place-items: center;
 }
 
 .stage {
   position: relative;
   width: 540px;
-  height: 960px;
+  height: var(--stage-h);
   flex: none;
   overflow: hidden;
   background: var(--cream);
-  transform: scale(var(--scale));
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(var(--scale));
   transform-origin: center center;
   font-family: "Cormorant Garamond", Georgia, serif;
   color: var(--ink);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, .45);
+  box-shadow: 0 20px 60px rgba(60, 35, 20, .35);
   user-select: none;
 }
 
@@ -160,6 +180,7 @@ html, body {
   filter: blur(4px);
 }
 .calendar.rows-6 { grid-auto-rows: 40px; }
+.calendar.landed { z-index: 4; } /* date number shows on top of the heart */
 .calendar .cell {
   position: relative;
   display: grid; place-items: center;
@@ -301,6 +322,10 @@ html, body {
 }
 .ground2__heart { position: absolute; left: 78px; top: 104px; font-size: 18px; color: #6b3427; }
 
+/* tall phones: move the text block down so spacing stays balanced */
+.arc-title, .month-block, .calendar, .wedding-of, .monogram, .final-text { translate: 0 var(--shift); }
+.stage.is-full { box-shadow: none; }
+
 /* ---------------- Controls ---------------- */
 
 .ctrl {
@@ -350,7 +375,10 @@ html, body {
 .has-skyline .art--skyline { display: block; left: -50px; bottom: -6px; width: 640px; }
 
 .has-couple .ground__couple { display: none; }
-.has-couple .art--couple { display: block; left: 50%; bottom: -10px; height: 385px; transform: translateX(-50%); }
+.has-couple .art--couple { display: block; left: 50%; bottom: -10px; height: calc(385px + min(0px, var(--stage-h) - 960px) * .6); transform: translateX(-50%); }
 
 .has-florals .monogram .spray { display: none; }
 .has-florals .art--mono-floral { display: block; left: 300px; top: -14px; width: 190px; transform: scaleX(-1) rotate(-8deg); }
+
+/* reel mode (#reel): clean frame for screen recording, no buttons */
+.reel .ctrl { display: none !important; }

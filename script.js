@@ -23,11 +23,27 @@ const $ = (id) => document.getElementById(id);
 const stage = $("stage");
 
 /* ---------------- responsive scaling ---------------- */
+const REEL = location.hash === "#reel";
+if (REEL) { CONFIG.loop = true; stage.classList.add("reel"); }
+
 function fit() {
-  const s = Math.min(window.innerWidth / 540, window.innerHeight / 960);
+  const vw = window.visualViewport ? window.visualViewport.width : window.innerWidth;
+  const vh = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+  // fill the width; grow the stage taller on tall phones (up to ~9:21)
+  let s = vw / 540;
+  let h = vh / s;
+  // slightly shorter screens (phone browsers with toolbars) still fill edge to edge;
+  // anything shorter than 880 (landscape, desktop) is letterboxed instead
+  if (REEL || h < 880) { s = Math.min(vw / 540, vh / 960); h = 960; }
+  h = Math.min(h, 1260);
   stage.style.setProperty("--scale", s);
+  stage.style.setProperty("--stage-h", `${h}px`);
+  stage.style.setProperty("--shift", `${Math.round((h - 960) * (h < 960 ? 0.45 : 0.42))}px`);
+  stage.classList.toggle("is-full", Math.abs(vw - 540 * s) < 2);
 }
 window.addEventListener("resize", fit);
+window.addEventListener("orientationchange", () => setTimeout(fit, 250));
+if (window.visualViewport) window.visualViewport.addEventListener("resize", fit);
 fit();
 
 /* ---------------- static content ---------------- */
@@ -256,6 +272,7 @@ function play() {
     anim.onfinish = () => {
       if (!anim.effect) return;
       cells[CONFIG.day].classList.add("landed");
+      $("calendar").classList.add("landed");
       heart.classList.add("beat");
     };
   });
@@ -330,4 +347,12 @@ $("replayBtn").addEventListener("click", (e) => { e.stopPropagation(); play(); }
 buildText();
 setupArt();
 setupMusic();
-(document.fonts ? document.fonts.ready : Promise.resolve()).then(() => requestAnimationFrame(play));
+// tap anywhere on the last frame to replay
+stage.addEventListener("click", () => { if ($("replayBtn").classList.contains("show")) play(); });
+
+// start once fonts and paintings are ready (or after 4s on a slow connection)
+const imagesReady = Promise.all([...document.querySelectorAll("img.art")].map((img) =>
+  img.complete ? null : new Promise((r) => { img.addEventListener("load", r, { once: true }); img.addEventListener("error", r, { once: true }); })));
+const fontsReady = document.fonts ? document.fonts.ready : Promise.resolve();
+Promise.race([Promise.all([fontsReady, imagesReady]), new Promise((r) => setTimeout(r, 4000))])
+  .then(() => { fit(); requestAnimationFrame(play); });
