@@ -441,3 +441,16 @@ body::before {
 }
 
 .wedding-of__names .amp { font-family: "Cormorant Garamond", serif; font-style: italic; font-size: 30px; margin: 0 8px; color: #7a2a35; }
+
+/* scene 2: no couple in front, so the two photos meet with only a short soft seam */
+.ground--s2 .photo-ground img { width: 300px; }
+.ground--s2 .photo-ground__temple {
+  left: -20px;
+  -webkit-mask-image: linear-gradient(to top, #000 55%, transparent 98%), linear-gradient(to left, transparent 0, #000 14%);
+          mask-image: linear-gradient(to top, #000 55%, transparent 98%), linear-gradient(to left, transparent 0, #000 14%);
+}
+.ground--s2 .photo-ground__cafe {
+  right: -20px;
+  -webkit-mask-image: linear-gradient(to top, #000 55%, transparent 98%), linear-gradient(to right, transparent 0, #000 14%);
+          mask-image: linear-gradient(to top, #000 55%, transparent 98%), linear-gradient(to right, transparent 0, #000 14%);
+}
