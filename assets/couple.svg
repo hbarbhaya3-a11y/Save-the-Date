@@ -1,0 +1,161 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 440">
+  <defs>
+    <linearGradient id="red" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#b3202f"/>
+      <stop offset="1" stop-color="#7d0f1c"/>
+    </linearGradient>
+    <linearGradient id="redSkirt" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#7e0f1b"/>
+      <stop offset=".35" stop-color="#b1202e"/>
+      <stop offset=".7" stop-color="#9d1826"/>
+      <stop offset="1" stop-color="#6f0c17"/>
+    </linearGradient>
+    <linearGradient id="ivory" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#fbf6ec"/>
+      <stop offset=".6" stop-color="#f1e7d4"/>
+      <stop offset="1" stop-color="#dccbac"/>
+    </linearGradient>
+    <linearGradient id="stole" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#eadbbd"/>
+      <stop offset="1" stop-color="#d2bc94"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f3cf6e"/>
+      <stop offset="1" stop-color="#b98422"/>
+    </linearGradient>
+    <pattern id="buta" width="16" height="16" patternUnits="userSpaceOnUse">
+      <circle cx="4" cy="4" r="1.1" fill="#e2b04f" opacity=".85"/>
+      <circle cx="12" cy="12" r="1.1" fill="#e2b04f" opacity=".85"/>
+    </pattern>
+  </defs>
+
+  <!-- ================= BRIDE: dupatta behind ================= -->
+  <path d="M104 70C78 84 66 120 64 160 58 260 46 340 36 430H78C82 330 88 250 98 170Z" fill="url(#red)"/>
+  <path d="M104 70C78 84 66 120 64 160 58 260 46 340 36 430" fill="none" stroke="url(#gold)" stroke-width="4"/>
+  <path d="M36 430H78" stroke="url(#gold)" stroke-width="5"/>
+
+  <!-- ================= GROOM ================= -->
+  <!-- legs / churidar + mojari -->
+  <path d="M196 388L194 424H210L212 388Z" fill="#f5efe3" stroke="#cbb894" stroke-width=".8"/>
+  <path d="M222 388L224 424H240L238 388Z" fill="#f5efe3" stroke="#cbb894" stroke-width=".8"/>
+  <path d="M188 432Q190 422 200 422H212V434H190Z" fill="url(#gold)" stroke="#8a6420" stroke-width=".6"/>
+  <path d="M222 434V422H236Q246 422 248 432L246 434Z" fill="url(#gold)" stroke="#8a6420" stroke-width=".6"/>
+
+  <!-- sherwani -->
+  <path d="M176 138Q160 148 158 196L150 394Q206 404 266 394L256 196Q254 150 238 138L216 132H198Z" fill="url(#ivory)" stroke="#c9b48e" stroke-width="1"/>
+  <path d="M207 142V396" stroke="#cbb48c" stroke-width="1.2"/>
+  <g fill="url(#gold)">
+    <circle cx="207" cy="160" r="2.2"/><circle cx="207" cy="180" r="2.2"/><circle cx="207" cy="200" r="2.2"/>
+    <circle cx="207" cy="220" r="2.2"/><circle cx="207" cy="240" r="2.2"/><circle cx="207" cy="260" r="2.2"/>
+  </g>
+  <path d="M152 384Q206 394 264 384" fill="none" stroke="#d6c39c" stroke-width="3"/>
+  <path d="M170 220Q174 300 166 380M244 220Q240 300 250 380" fill="none" stroke="#e1d3b6" stroke-width="1.2"/>
+  <!-- stole over right shoulder -->
+  <path d="M232 136Q258 148 260 206L266 398H246L240 210Q236 170 222 150Z" fill="url(#stole)" stroke="#bda67c" stroke-width=".8"/>
+  <path d="M248 398H266" stroke="#b98a3a" stroke-width="3"/>
+  <!-- collar & neck -->
+  <path d="M196 116H218V140H196Z" fill="#e2a982"/>
+  <path d="M194 132Q207 146 220 132L222 142Q207 152 192 142Z" fill="#efe4cd" stroke="#c9b48e" stroke-width=".8"/>
+
+  <!-- head group, tilted toward the bride -->
+  <g transform="rotate(-7 207 120)">
+    <path d="M184 96Q181 100 184 106" fill="none" stroke="#c98a66" stroke-width="5" stroke-linecap="round"/>
+    <path d="M230 96Q233 100 230 106" fill="none" stroke="#c98a66" stroke-width="5" stroke-linecap="round"/>
+    <ellipse cx="207" cy="98" rx="23" ry="27" fill="#e6af88"/>
+    <!-- beard -->
+    <path d="M184 96Q186 128 207 132Q228 128 230 96Q226 110 220 114Q207 110 194 114Q188 110 184 96Z" fill="#3a2a22"/>
+    <path d="M197 112Q207 106 217 112Q207 110 197 112Z" fill="#3a2a22"/>
+    <!-- smile -->
+    <path d="M199 116Q207 123 215 116Q207 119 199 116Z" fill="#fff"/>
+    <!-- eyes (happy, closed) & brows -->
+    <path d="M195 95Q199 92 203 95M211 95Q215 92 219 95" fill="none" stroke="#2c1d17" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M193 88Q198 85 203 87M211 87Q216 85 221 88" fill="none" stroke="#2c1d17" stroke-width="2.2" stroke-linecap="round"/>
+    <path d="M207 97Q205 104 208 106" fill="none" stroke="#b97b58" stroke-width="1.2"/>
+    <!-- turban (safa) -->
+    <path d="M181 86Q176 46 207 40Q240 44 234 86Q224 74 207 76Q190 74 181 86Z" fill="#f1e5cd" stroke="#c9b48e" stroke-width="1"/>
+    <path d="M184 76Q205 60 232 74M186 66Q206 50 230 62M192 54Q206 44 224 52" fill="none" stroke="#d2bf9a" stroke-width="1.4"/>
+    <path d="M232 70Q248 80 246 110Q244 126 238 132" fill="none" stroke="#e7d7b8" stroke-width="7" stroke-linecap="round"/>
+    <circle cx="208" cy="58" r="6" fill="url(#gold)" stroke="#8a6420" stroke-width=".6"/>
+    <circle cx="208" cy="58" r="2.6" fill="#b3202f"/>
+    <path d="M208 52Q212 34 222 26" fill="none" stroke="#e9dcc2" stroke-width="3" stroke-linecap="round"/>
+  </g>
+
+  <!-- groom garland (jasmine & green) -->
+  <path d="M190 138Q186 210 204 276M226 138Q232 210 212 276" fill="none" stroke="#3f6b3a" stroke-width="8" stroke-linecap="round"/>
+  <path d="M190 138Q186 210 204 276M226 138Q232 210 212 276" fill="none" stroke="#fffdf6" stroke-width="7" stroke-linecap="round" stroke-dasharray="0.1 9"/>
+  <path d="M208 276V300" stroke="#3f6b3a" stroke-width="3"/>
+  <circle cx="208" cy="304" r="6" fill="#fffdf6" stroke="#cdbf9e" stroke-width=".8"/>
+  <circle cx="208" cy="304" r="2.2" fill="#e98a3b"/>
+
+  <!-- groom right arm (hangs, viewer right) -->
+  <path d="M248 150Q264 200 262 262L258 320 246 320 246 262Q244 210 238 170Z" fill="url(#ivory)" stroke="#c9b48e" stroke-width=".8"/>
+  <ellipse cx="253" cy="328" rx="8" ry="10" fill="#e2a982"/>
+
+  <!-- ================= BRIDE ================= -->
+  <!-- lehenga -->
+  <path d="M96 232Q62 330 38 428Q112 444 194 428Q172 330 152 232Z" fill="url(#redSkirt)"/>
+  <path d="M96 232Q62 330 38 428Q112 444 194 428Q172 330 152 232Z" fill="url(#buta)"/>
+  <path d="M42 412Q114 428 190 412" fill="none" stroke="url(#gold)" stroke-width="7"/>
+  <path d="M46 398Q114 413 186 398" fill="none" stroke="#e2b04f" stroke-width="1.6" stroke-dasharray="3 3"/>
+  <path d="M40 424Q112 440 192 424" fill="none" stroke="#e2b04f" stroke-width="2"/>
+  <path d="M110 240Q100 330 92 420M136 240Q142 330 150 420" fill="none" stroke="#6f0c17" stroke-width="1.2" opacity=".6"/>
+  <!-- blouse -->
+  <path d="M102 150Q94 196 96 236H152Q154 196 146 150L134 144H114Z" fill="#8c1321"/>
+  <path d="M96 232H152" stroke="url(#gold)" stroke-width="4"/>
+  <!-- neck -->
+  <path d="M116 120H132V146H116Z" fill="#dda07b"/>
+  <!-- necklace -->
+  <path d="M112 142Q124 168 136 142" fill="none" stroke="url(#gold)" stroke-width="5"/>
+  <path d="M110 146Q124 182 138 146" fill="none" stroke="url(#gold)" stroke-width="2.4"/>
+  <circle cx="124" cy="166" r="4" fill="url(#gold)"/><circle cx="124" cy="166" r="1.6" fill="#2f7a4a"/>
+
+  <!-- bride head (tilted up toward groom) -->
+  <g transform="rotate(10 124 110)">
+    <path d="M102 104Q98 76 124 72Q150 74 146 106Q148 124 140 132Q124 136 108 132Q100 124 102 104Z" fill="#2b1c18"/>
+    <ellipse cx="124" cy="106" rx="18" ry="22" fill="#e3a985"/>
+    <!-- hair parting / bun line -->
+    <path d="M106 96Q112 82 124 82Q136 82 142 96Q134 88 124 88Q114 88 106 96Z" fill="#2b1c18"/>
+    <!-- eyes & brows -->
+    <path d="M114 102Q117 99 120 102M128 102Q131 99 134 102" fill="none" stroke="#2c1d17" stroke-width="1.6" stroke-linecap="round"/>
+    <path d="M112 96Q116 93 120 95M128 95Q132 93 136 96" fill="none" stroke="#2c1d17" stroke-width="1.6" stroke-linecap="round"/>
+    <circle cx="124" cy="94" r="1.6" fill="#b3202f"/>
+    <!-- open smile -->
+    <path d="M117 113Q124 122 131 113Z" fill="#9e2a2a"/>
+    <path d="M118 113.5Q124 116 130 113.5L129 115Q124 117 119 115Z" fill="#fff"/>
+    <!-- nath -->
+    <circle cx="120" cy="109" r="4.5" fill="none" stroke="url(#gold)" stroke-width="1.2"/>
+    <!-- maang tikka -->
+    <path d="M124 82V90" stroke="url(#gold)" stroke-width="1.2"/>
+    <circle cx="124" cy="91" r="2.4" fill="url(#gold)"/>
+    <!-- earrings -->
+    <circle cx="106" cy="114" r="3" fill="url(#gold)"/><circle cx="142" cy="114" r="3" fill="url(#gold)"/>
+    <!-- dupatta over head -->
+    <path d="M96 116Q92 66 124 62Q156 64 152 112Q148 80 124 76Q102 78 96 116Z" fill="url(#red)"/>
+    <path d="M96 116Q92 66 124 62Q156 64 152 112" fill="none" stroke="url(#gold)" stroke-width="3"/>
+  </g>
+
+  <!-- dupatta drape across front -->
+  <path d="M146 140Q170 170 164 230Q160 280 172 330L156 334Q146 280 148 230Q150 180 138 150Z" fill="#a51b2a" opacity=".9"/>
+  <path d="M146 140Q170 170 164 230Q160 280 172 330" fill="none" stroke="url(#gold)" stroke-width="2.4"/>
+
+  <!-- bride garland -->
+  <path d="M108 142Q100 220 118 292M140 142Q150 220 130 292" fill="none" stroke="#3f6b3a" stroke-width="8" stroke-linecap="round"/>
+  <path d="M108 142Q100 220 118 292M140 142Q150 220 130 292" fill="none" stroke="#fffdf6" stroke-width="7" stroke-linecap="round" stroke-dasharray="0.1 9"/>
+  <path d="M124 292V314" stroke="#3f6b3a" stroke-width="3"/>
+  <circle cx="124" cy="318" r="6" fill="#fffdf6" stroke="#cdbf9e" stroke-width=".8"/>
+  <circle cx="124" cy="318" r="2.2" fill="#e98a3b"/>
+
+  <!-- bride left arm (holding lehenga) -->
+  <path d="M104 152Q86 196 84 250L82 290 94 292 98 250Q102 210 112 176Z" fill="#8c1321"/>
+  <ellipse cx="88" cy="298" rx="7" ry="9" fill="#dda07b"/>
+  <path d="M80 284H96M80 288H96" stroke="url(#gold)" stroke-width="2"/>
+  <path d="M80 280H96" stroke="#c4182a" stroke-width="2.4"/>
+
+  <!-- arms linked: bride's right arm & groom's left arm -->
+  <path d="M146 154Q160 190 162 222L176 230 182 220Q170 200 156 150Z" fill="#8c1321"/>
+  <path d="M178 144Q160 160 160 210Q162 236 176 246L190 240Q178 224 180 196Q182 168 190 150Z" fill="url(#ivory)" stroke="#c9b48e" stroke-width=".8"/>
+  <ellipse cx="186" cy="232" rx="8" ry="7" fill="#e2a982"/>
+  <ellipse cx="170" cy="226" rx="7" ry="6" fill="#dda07b"/>
+  <path d="M160 222L164 230M163 220L167 228" stroke="url(#gold)" stroke-width="2"/>
+  <path d="M157 224L161 232" stroke="#c4182a" stroke-width="2.4"/>
+</svg>

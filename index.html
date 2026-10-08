@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Save the Date · Abhishek &amp; Deepa</title>
+  <meta name="description" content="Animated Save the Date – Abhishek &amp; Deepa – 25 November 2026" />
+  <meta name="theme-color" content="#fbf4ec" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:wght@500;600;700&family=Gilda+Display&family=Pinyon+Script&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="viewport">
+    <div class="stage" id="stage" aria-live="polite">
+
+      <!-- ============ Persistent background ============ -->
+      <div class="bg">
+        <div class="wash wash--peach"></div>
+        <div class="wash wash--peach2"></div>
+        <div class="wash wash--lavender"></div>
+        <div class="wash wash--blue"></div>
+        <img class="deco deco--flower" src="assets/flower-lineart.svg" alt="" />
+        <img class="deco deco--leaves" src="assets/leaves.svg" alt="" />
+        <img class="deco deco--leaves-br" src="assets/leaves.svg" alt="" />
+        <div class="paper-grain"></div>
+      </div>
+
+      <!-- ============ Scene 1 : calendar ============ -->
+      <section class="scene scene--calendar" id="scene1">
+        <h1 class="arc-title" id="arcTitle" aria-label="Save the Date"></h1>
+
+        <div class="month-block">
+          <div class="month" id="monthName">NOVEMBER</div>
+          <div class="year" id="yearName">2026</div>
+        </div>
+
+        <div class="calendar" id="calendar" role="grid" aria-label="Calendar"></div>
+
+        <div class="wedding-of">
+          <h2 class="wedding-of__label" id="weddingLabel" aria-label="For the wedding of"></h2>
+          <p class="wedding-of__names" id="coupleNames">Abhishek &amp; Deepa</p>
+        </div>
+
+        <div class="heart" id="heart" aria-hidden="true">
+          <svg viewBox="0 0 64 58"><defs><radialGradient id="hg" cx="35%" cy="30%" r="80%"><stop offset="0" stop-color="#ff6b6b"/><stop offset=".55" stop-color="#ee2f37"/><stop offset="1" stop-color="#c8151f"/></radialGradient></defs><path d="M32 56C14 42 2 31 2 17 2 8 9 1 18 1c6 0 11 3 14 8 3-5 8-8 14-8 9 0 16 7 16 16 0 14-12 25-30 39z" fill="url(#hg)"/><ellipse cx="17" cy="14" rx="6" ry="4" fill="#fff" opacity=".35" transform="rotate(-30 17 14)"/></svg>
+        </div>
+
+        <div class="ground ground--s1">
+          <img class="ground__temple" src="assets/temple.svg" alt="" />
+          <img class="ground__industry" src="assets/industry.svg" alt="" />
+          <img class="ground__bushes" src="assets/bushes.svg" alt="" />
+          <img class="ground__couple" src="assets/couple.svg" alt="Illustration of the bride and groom" />
+        </div>
+      </section>
+
+      <!-- ============ Scene 2 : monogram ============ -->
+      <section class="scene scene--monogram" id="scene2">
+        <div class="monogram" id="monogram">
+          <svg viewBox="0 0 420 400" class="monogram__svg" aria-label="A and D monogram">
+            <defs>
+              <linearGradient id="copper" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#a86b47"/>
+                <stop offset=".45" stop-color="#d9a17a"/>
+                <stop offset=".6" stop-color="#9c5c3b"/>
+                <stop offset="1" stop-color="#7a4529"/>
+              </linearGradient>
+              <linearGradient id="ring" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="#b98a6b"/>
+                <stop offset=".5" stop-color="#dcbca2"/>
+                <stop offset="1" stop-color="#a7795c"/>
+              </linearGradient>
+              <radialGradient id="petal" cx="20%" cy="50%" r="90%">
+                <stop offset="0" stop-color="#f3b99c"/>
+                <stop offset=".6" stop-color="#f9dccb"/>
+                <stop offset="1" stop-color="#fdf0e6"/>
+              </radialGradient>
+              <linearGradient id="leafBlue" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#6f7fa8"/>
+                <stop offset="1" stop-color="#a9b6d4"/>
+              </linearGradient>
+              <clipPath id="ringClip"><circle cx="200" cy="190" r="168"/></clipPath>
+              <symbol id="petalShape" viewBox="-30 -70 60 72">
+                <path d="M0 0C-22-14-30-40-16-62-8-70 8-70 16-62 30-40 22-14 0 0Z"/>
+              </symbol>
+              <symbol id="leafShape" viewBox="-10 -50 20 52">
+                <path d="M0 0C-9-14-9-34 0-50 9-34 9-14 0 0Z"/>
+              </symbol>
+            </defs>
+
+            <!-- ring (gap at the upper-right where the florals sit) -->
+            <path class="mono-ring" d="M296 52 A168 168 0 1 0 352 262" fill="none" stroke="url(#ring)" stroke-width="2.4" stroke-linecap="round"/>
+            <circle cx="33" cy="182" r="2.6" fill="#a7795c"/>
+            <circle cx="35" cy="196" r="1.6" fill="#a7795c"/>
+
+            <!-- temple sketch inside the ring -->
+            <g clip-path="url(#ringClip)" opacity=".95">
+              <image href="assets/temple.svg" x="62" y="250" width="180" height="120"/>
+              <image href="assets/industry.svg" x="215" y="282" width="110" height="88"/>
+              <rect x="40" y="356" width="330" height="40" fill="#fbf4ec"/>
+              <path d="M55 357h300" stroke="#c9a789" stroke-width="1.2"/>
+            </g>
+
+            <!-- left sprig on the A -->
+            <g class="sprig" stroke="#8a5a3c" stroke-width="1.6" fill="#8a5a3c">
+              <path d="M84 238C92 210 102 182 124 160" fill="none"/>
+              <use href="#leafShape" x="-6" y="-28" width="12" height="28" transform="translate(96 214) rotate(-60)"/>
+              <use href="#leafShape" x="-6" y="-28" width="12" height="28" transform="translate(96 214) rotate(20)"/>
+              <use href="#leafShape" x="-6" y="-28" width="12" height="28" transform="translate(106 192) rotate(-55)"/>
+              <use href="#leafShape" x="-6" y="-28" width="12" height="28" transform="translate(106 192) rotate(25)"/>
+              <use href="#leafShape" x="-6" y="-26" width="12" height="26" transform="translate(116 174) rotate(-50)"/>
+              <use href="#leafShape" x="-6" y="-26" width="12" height="26" transform="translate(116 174) rotate(30)"/>
+              <use href="#leafShape" x="-5" y="-22" width="10" height="22" transform="translate(124 160) rotate(-10)"/>
+            </g>
+
+            <!-- letters -->
+            <text class="mono-letter" x="140" y="224" text-anchor="middle">A</text>
+            <text class="mono-amp" x="196" y="268" text-anchor="middle">&amp;</text>
+            <text class="mono-letter" x="258" y="286" text-anchor="middle">D</text>
+
+            <!-- floral spray on the right -->
+            <g class="spray">
+              <path d="M240 72C262 92 282 112 300 150M330 168C340 210 330 250 300 300" fill="none" stroke="#7f8fb4" stroke-width="1.6"/>
+              <path d="M300 300C320 290 340 300 352 286" fill="none" stroke="#7f8fb4" stroke-width="1.2"/>
+              <!-- blue leaves -->
+              <g fill="url(#leafBlue)" opacity=".9">
+                <use href="#leafShape" x="-9" y="-46" width="18" height="46" transform="translate(338 214) rotate(30)"/>
+                <use href="#leafShape" x="-9" y="-40" width="18" height="40" transform="translate(334 236) rotate(70)"/>
+                <use href="#leafShape" x="-8" y="-38" width="16" height="38" transform="translate(320 262) rotate(110)"/>
+                <use href="#leafShape" x="-8" y="-36" width="16" height="36" transform="translate(316 274) rotate(-40)"/>
+                <use href="#leafShape" x="-7" y="-30" width="14" height="30" transform="translate(304 296) rotate(80)"/>
+                <use href="#leafShape" x="-8" y="-34" width="16" height="34" transform="translate(276 104) rotate(-30)"/>
+              </g>
+              <!-- buds -->
+              <g fill="#e9a68a" stroke="#c98468" stroke-width=".8">
+                <ellipse cx="238" cy="70" rx="5" ry="8" transform="rotate(-40 238 70)"/>
+                <ellipse cx="258" cy="84" rx="4" ry="7" transform="rotate(-20 258 84)"/>
+                <ellipse cx="352" cy="284" rx="3.5" ry="6" transform="rotate(60 352 284)"/>
+                <circle cx="364" cy="100" r="3"/><circle cx="372" cy="112" r="2.5"/><circle cx="358" cy="92" r="2"/>
+              </g>
+              <path d="M326 150C340 130 352 112 364 100" fill="none" stroke="#c98468" stroke-width="1"/>
+              <!-- main flower -->
+              <g transform="translate(330 112) scale(.82)"><g class="bloom">
+                <g fill="url(#petal)" stroke="#dca58c" stroke-width="1">
+                  <use href="#petalShape" x="-26" y="-62" width="52" height="64" transform="rotate(0)"/>
+                  <use href="#petalShape" x="-26" y="-62" width="52" height="64" transform="rotate(72)"/>
+                  <use href="#petalShape" x="-26" y="-62" width="52" height="64" transform="rotate(144)"/>
+                  <use href="#petalShape" x="-26" y="-62" width="52" height="64" transform="rotate(216)"/>
+                  <use href="#petalShape" x="-26" y="-62" width="52" height="64" transform="rotate(288)"/>
+                </g>
+                <g stroke="#e3a888" stroke-width=".7" fill="none" opacity=".8">
+                  <path d="M0 0L0-44M0 0L42-14M0 0L26 36M0 0L-26 36M0 0L-42-14"/>
+                </g>
+                <circle r="7" fill="#c98468"/>
+                <g fill="#a35f42"><circle cx="-4" cy="-12" r="2"/><circle cx="6" cy="-11" r="2"/><circle cx="11" cy="-2" r="2"/><circle cx="-11" cy="-3" r="2"/><circle cx="1" cy="-15" r="1.8"/></g>
+              </g></g>
+            </g>
+          </svg>
+          <div class="monogram__divider" aria-hidden="true">
+            <span class="line"></span><span class="chev">›››</span><span class="dheart">♥</span><span class="chev">‹‹‹</span><span class="line"></span>
+          </div>
+          <p class="monogram__names" id="monoNames">ABHISHEK &amp; DEEPA</p>
+        </div>
+
+        <div class="final-text">
+          <p class="final-text__std" id="typeSTD"><span class="tw"></span><span class="caret"></span></p>
+          <p class="final-text__date" id="typeDate"><span class="tw"></span><span class="caret"></span></p>
+        </div>
+
+        <div class="ground ground--s2">
+          <img class="ground2__temple" src="assets/temple.svg" alt="" />
+          <div class="ground2__map">
+            <img src="assets/cg-map.svg" alt="Map of Chhattisgarh" />
+            <span class="ground2__label" id="placeLabel">Chhattisgarh</span>
+            <span class="ground2__heart">♥</span>
+          </div>
+          <img class="ground2__industry" src="assets/industry.svg" alt="" />
+          <img class="ground2__bushes" src="assets/bushes.svg" alt="" />
+        </div>
+      </section>
+
+      <!-- controls -->
+      <button class="ctrl ctrl--replay" id="replayBtn" type="button" aria-label="Replay">
+        <svg viewBox="0 0 24 24"><path d="M12 5V1L7 6l5 5V7a6 6 0 1 1-6 6H4a8 8 0 1 0 8-8z" fill="currentColor"/></svg>
+        <span>Replay</span>
+      </button>
+      <button class="ctrl ctrl--sound" id="soundBtn" type="button" aria-label="Toggle music" hidden>
+        <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z" fill="currentColor"/></svg>
+      </button>
+    </div>
+  </main>
+
+  <!-- Optional background music: drop an mp3 at assets/music.mp3 -->
+  <audio id="music" src="assets/music.mp3" preload="auto" loop></audio>
+  <script src="script.js"></script>
+</body>
+</html>
