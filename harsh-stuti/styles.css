@@ -156,7 +156,7 @@ body::before {
 .arc-title .ch.in { opacity: 1; filter: none; }
 .arc-title .ch.out { opacity: 0; filter: blur(2px); transition-duration: .3s; }
 
-.month-block { position: absolute; left: 0; width: 540px; top: 150px; text-align: center; }
+.month-block { position: absolute; left: 0; width: 540px; top: 136px; text-align: center; }
 .month {
   font-family: "Cormorant Garamond", serif; font-weight: 500;
   font-size: 29px; letter-spacing: 1.5px; color: var(--rose-soft);
@@ -172,7 +172,7 @@ body::before {
 /* calendar */
 .calendar {
   position: absolute;
-  left: 50px; width: 452px; top: 240px;
+  left: 50px; width: 452px; top: 214px;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-auto-rows: 44px;
@@ -181,7 +181,7 @@ body::before {
   text-align: center;
   filter: blur(4px);
 }
-.calendar.rows-6 { grid-auto-rows: 40px; }
+.calendar.rows-6 { grid-auto-rows: 36px; }
 .calendar.landed { z-index: 4; } /* date number shows on top of the heart */
 .calendar .cell {
   position: relative;
@@ -216,7 +216,7 @@ body::before {
 }
 
 /* wedding-of */
-.wedding-of { position: absolute; left: 0; width: 540px; top: 520px; text-align: center; }
+.wedding-of { position: absolute; left: 0; width: 540px; top: 478px; text-align: center; }
 .wedding-of__label {
   font-family: "Cinzel", serif; font-weight: 500;
   font-size: 27px; letter-spacing: .5px;
@@ -377,7 +377,7 @@ body::before {
 .has-skyline .art--skyline { display: block; left: -50px; bottom: -6px; width: 640px; }
 
 .has-couple .ground__couple { display: none; }
-.has-couple .art--couple { display: block; left: 50%; bottom: -10px; height: calc(385px + min(0px, var(--stage-h) - 960px) * .6); transform: translateX(-50%); }
+.has-couple .art--couple { display: block; left: 50%; bottom: -30px; height: calc(428px + min(0px, var(--stage-h) - 960px) * .6); transform: translateX(-50%); }
 
 .has-florals .monogram .spray { display: none; }
 .has-florals .art--mono-floral { display: block; left: 300px; top: -14px; width: 190px; transform: scaleX(-1) rotate(-8deg); }
