@@ -315,9 +315,19 @@ function setupMusic() {
   music.addEventListener("canplaythrough", tryPlay, { once: true });
 }
 
+/* ---------------- painted artwork ---------------- */
+function setupArt() {
+  document.querySelectorAll("img.art").forEach((img) => {
+    const show = () => img.naturalWidth && stage.classList.add(`has-${img.dataset.art}`);
+    if (img.complete) show();
+    else img.addEventListener("load", show, { once: true });
+  });
+}
+
 /* ---------------- boot ---------------- */
 $("replayBtn").addEventListener("click", (e) => { e.stopPropagation(); play(); });
 
 buildText();
+setupArt();
 setupMusic();
 (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => requestAnimationFrame(play));

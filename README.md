@@ -32,6 +32,23 @@ The background florals and watercolour washes sway gently the whole time.
 
 Edit `CONFIG` at the top of `script.js`. It holds the names, initials, date, place, week start and looping. The calendar and the heart's path are generated from the date, so they stay correct for any date.
 
+## Painted artwork
+
+The page uses painted watercolour artwork from `assets/art/` when those files are present. Until then it shows the SVG drawings in `assets/`.
+
+| File | What it is |
+|------|------------|
+| `background.jpg` | watercolour paper background (9:16) |
+| `couple.png` | bride and groom |
+| `skyline.png` | temple and Bhilai steel-plant skyline |
+| `florals.png` | peach flower corner |
+
+To turn a painting on a white background into a transparent PNG:
+
+```
+python3 tools/prepare_art.py couple-from-canva.jpg assets/art/couple.png
+```
+
 ## Music (optional)
 
 Put an mp3 at `assets/music.mp3`. A sound toggle appears automatically. Browsers only allow audio after the first tap. Use music you have the rights to.

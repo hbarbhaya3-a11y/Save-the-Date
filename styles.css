@@ -326,3 +326,31 @@ html, body {
 @media (prefers-reduced-motion: reduce) {
   .wash, .deco--flower, .deco--leaves { animation: none; }
 }
+
+/* ---------------- Painted artwork (assets/art/*) ----------------
+   Transparent PNGs made with tools/prepare_art.py (background is a JPG).
+   A painting is shown only once it has loaded; the SVG drawing is hidden then. */
+
+.art { display: none; position: absolute; pointer-events: none; }
+
+.has-bg .art--bg { display: block; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.has-bg .wash, .has-bg .deco--leaves, .has-bg .deco--leaves-br { display: none; }
+
+.has-florals .art--florals {
+  display: block; right: -70px; top: -60px; width: 320px;
+  transform: scaleX(-1);
+  transform-origin: 50% 0;
+  animation: swayFlip 7s ease-in-out infinite alternate;
+}
+.has-florals .deco--flower { display: none; }
+@keyframes swayFlip { from { transform: scaleX(-1) rotate(-1.5deg); } to { transform: scaleX(-1) rotate(1.5deg); } }
+
+.has-skyline .ground__temple, .has-skyline .ground__industry, .has-skyline .ground__bushes,
+.has-skyline .ground2__temple, .has-skyline .ground2__industry, .has-skyline .ground2__bushes { display: none; }
+.has-skyline .art--skyline { display: block; left: -50px; bottom: -6px; width: 640px; }
+
+.has-couple .ground__couple { display: none; }
+.has-couple .art--couple { display: block; left: 50%; bottom: -10px; height: 385px; transform: translateX(-50%); }
+
+.has-florals .monogram .spray { display: none; }
+.has-florals .art--mono-floral { display: block; left: 300px; top: -14px; width: 190px; transform: scaleX(-1) rotate(-8deg); }
