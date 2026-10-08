@@ -1,6 +1,6 @@
 """Cut a painting off its paper backdrop: removes the low-saturation light tones
 (paper + floor shadow) connected to the border, plus an artist signature box.
-Usage: python3 tools/cutout_paper.py SRC MASK_OUT"""
+Usage: python3 tools/cutout_paper.py SRC MASK_OUT [x0,y0,x1,y1]  (optional signature box, pixels)"""
 import sys
 import numpy as np
 from PIL import Image, ImageDraw, ImageFilter
@@ -28,9 +28,10 @@ for _ in range(60):
     if (nb == grow).all(): break
     grow = nb
 bg = grow
-# artist signature (bottom right, outside the figures)
-sx0, sy0, sx1, sy1 = [int(v * w / 768) if i % 2 == 0 else int(v * h / 1024) for i, v in enumerate((556, 800, 615, 920))]
-bg[sy0:sy1, sx0:sx1] = True
+# optional artist signature box
+if len(sys.argv) > 3:
+    sx0, sy0, sx1, sy1 = map(int, sys.argv[3].split(","))
+    bg[sy0:sy1, sx0:sx1] = True
 # close tiny specks inside the backdrop
 bgimg = Image.fromarray(bg.astype(np.uint8) * 255, "L").filter(ImageFilter.MaxFilter(3)).filter(ImageFilter.MinFilter(3))
 alpha = (255 - np.asarray(bgimg.filter(ImageFilter.MaxFilter(3)).filter(ImageFilter.GaussianBlur(1.3)))).astype(np.float32)

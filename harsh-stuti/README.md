@@ -10,7 +10,7 @@ This invitation uses the same structure and flow as the original reel (see the [
 Theme: the same watercolour paper and florals as the main invitation. The bride wears a dusty-rose lehenga and the groom an ivory sherwani.
 
 Assets in `assets/`:
-- `art/couple.webp`: the couple. Run `python3 ../tools/prepare_art.py <file> art/couple.webp --mode flood` to swap it.
+- `art/couple.webp`: the painted couple. To swap it, run `python3 ../tools/cutout_paper.py <file> mask.png`, then apply the mask as the alpha channel.
 - `art/background.webp`, `art/florals.webp`: the watercolour paper and florals, the same as the main invitation.
 - `temple.jpg`, `cafe.jpg`: the venue photos used along the bottom.
 
