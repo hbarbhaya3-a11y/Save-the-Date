@@ -62,7 +62,7 @@ function buildArc() {
   el.innerHTML = "";
   const text = "Save the Date";
   const cx = 270, cy = 300, r = 214;
-  const fontSize = 50;
+  const fontSize = 44;
   const ctx = document.createElement("canvas").getContext("2d");
   ctx.font = `${fontSize}px "Gilda Display", serif`;
   const tracking = 7;

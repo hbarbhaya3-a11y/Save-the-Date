@@ -139,7 +139,7 @@ body::before {
   position: absolute; left: 0; top: 0; width: 540px; height: 200px;
   font-family: "Gilda Display", "Cormorant Garamond", serif;
   font-weight: 400;
-  font-size: 50px;
+  font-size: 42px;
   color: var(--rose);
   pointer-events: none;
 }
@@ -483,3 +483,88 @@ body::before {
   -webkit-mask-image: linear-gradient(to top, #000 91%, transparent 100%);
           mask-image: linear-gradient(to top, #000 91%, transparent 100%);
 }
+
+/* show each venue photo whole (no cropping), edges fading into the paper */
+.photo-ground--one img, .ground--s2 .photo-ground--one img {
+  left: 50%; right: auto; transform: translateX(-50%);
+  width: auto; object-fit: fill;
+  -webkit-mask-image: linear-gradient(to top, #000 88%, transparent 100%), linear-gradient(to right, transparent 0, #000 11%, #000 89%, transparent 100%);
+          mask-image: linear-gradient(to top, #000 88%, transparent 100%), linear-gradient(to right, transparent 0, #000 11%, #000 89%, transparent 100%);
+  -webkit-mask-composite: source-in; mask-composite: intersect;
+}
+.ground--s1 .photo-ground--one img { height: 418px; aspect-ratio: 1136 / 1172; }
+.ground--s2 .photo-ground--one img { height: 420px; aspect-ratio: 1136 / 1160; }
+
+/* final: full-width venue photos, tops always shown, bottoms (steps / tables) trimmed */
+.photo-ground--one img, .ground--s2 .photo-ground--one img {
+  left: -10px; transform: none; width: 560px; object-fit: cover; object-position: 50% 0;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 9%);
+          mask-image: linear-gradient(to bottom, transparent 0, #000 9%);
+  -webkit-mask-composite: source-over; mask-composite: add;
+}
+.ground--s1 .photo-ground--one, .ground--s1 .photo-ground--one img { height: 440px; aspect-ratio: auto; }
+.ground--s2 .photo-ground--one, .ground--s2 .photo-ground--one img { height: 432px; aspect-ratio: auto; }
+
+/* ===== compact top so both venue photos show whole (no cropping) ===== */
+.photo-ground--one, .ground--s2 .photo-ground--one, .ground--s1 .photo-ground--one { height: auto; }
+.photo-ground--one img, .ground--s2 .photo-ground--one img, .ground--s1 .photo-ground--one img {
+  position: absolute; left: 0; bottom: 0; transform: none;
+  width: 540px; height: auto; aspect-ratio: auto; object-fit: fill;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 7%);
+          mask-image: linear-gradient(to bottom, transparent 0, #000 7%);
+}
+.ground--s1, .ground--s2 { height: 640px; }
+
+/* scene 1 */
+.arc-title { margin-top: -48px; }
+.month-block { margin-top: -66px; }
+.month { font-size: 23px; }
+.year { font-size: 18px; margin-top: 2px; }
+.calendar { margin-top: -82px; }
+.calendar, .calendar.rows-6 { grid-auto-rows: 28px; }
+.calendar .cell { font-size: 18px; }
+.calendar .cell.head { font-size: 18px; }
+.wedding-of { margin-top: -150px; }
+.wedding-of__label { font-size: 16px; }
+.wedding-of__names { font-size: 54px; }
+.wedding-of__names .amp { font-size: 26px; }
+.heart { width: 44px; height: 40px; margin: -20px 0 0 -22px; }
+
+/* scene 2 */
+.monogram { margin-top: -80px; }
+.monogram .logo { transform: scale(.82); }
+.final-text { margin-top: -200px; }
+.final-text__std { font-size: 30px; min-height: 38px; }
+.final-text__date { font-size: 28px; min-height: 38px; margin-top: 2px; }
+.arc-title { margin-top: -34px; }
+.monogram .logo { transform: scale(.92); }
+.final-text { margin-top: -178px; }
+/* never lift the arched title above its normal place on shorter screens */
+.arc-title { translate: 0 max(0px, var(--shift)); }
+
+/* ===== v3: both venue photos same height, whole (uncropped), centred with soft edges ===== */
+.photo-ground--one img, .ground--s2 .photo-ground--one img, .ground--s1 .photo-ground--one img {
+  left: 50%; transform: translateX(-50%);
+  height: calc(480px + min(0px, var(--stage-h) - 960px)); width: auto;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 7%), linear-gradient(to right, transparent 0, #000 9%, #000 91%, transparent 100%);
+          mask-image: linear-gradient(to bottom, transparent 0, #000 7%), linear-gradient(to right, transparent 0, #000 9%, #000 91%, transparent 100%);
+  -webkit-mask-composite: source-in; mask-composite: intersect;
+}
+
+/* calendar back to a comfortable size */
+.arc-title { margin-top: -30px; font-size: 44px; }
+.month-block { margin-top: -58px; }
+.month { font-size: 26px; }
+.year { font-size: 20px; }
+.calendar { margin-top: -76px; }
+.calendar, .calendar.rows-6 { grid-auto-rows: 32px; }
+.calendar .cell { font-size: 20px; }
+.calendar .cell.head { font-size: 20px; }
+.heart { width: 48px; height: 43px; margin: -22px 0 0 -24px; }
+.wedding-of { margin-top: -112px; }
+.wedding-of__label { font-size: 17px; }
+.wedding-of__names { font-size: 56px; }
+.arc-title, .month-block, .calendar, .wedding-of { translate: 0 max(0px, var(--shift)); }
+
+/* couple to the side so the temple stays visible */
+.has-couple .art--couple { left: 74%; }
