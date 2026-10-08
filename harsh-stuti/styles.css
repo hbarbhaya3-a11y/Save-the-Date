@@ -458,3 +458,28 @@ body::before {
 /* names always sit above the illustration */
 .wedding-of { z-index: 6; }
 .ground--s1 { z-index: 1; }
+
+/* ---------------- one venue per scene ----------------
+   Scene 1: Jain temple behind the couple. Scene 2: Roots Cafe under the date.
+   The text blocks move up so each photo shows in full, spires/sign included. */
+.photo-ground--one img, .ground--s2 .photo-ground--one img {
+  left: -10px; right: auto; bottom: 0; width: 560px; object-fit: cover;
+  -webkit-mask-image: linear-gradient(to top, #000 80%, transparent 100%);
+          mask-image: linear-gradient(to top, #000 80%, transparent 100%);
+}
+.ground--s1 .photo-ground--one, .ground--s1 .photo-ground--one img { height: 470px; }
+.ground--s1 .photo-ground--one img { object-position: 50% 100%; }
+.ground--s2 .photo-ground--one, .ground--s2 .photo-ground--one img { height: 420px; }
+.ground--s2 .photo-ground--one img { object-position: 50% 80%; }
+
+.arc-title, .month-block, .calendar, .wedding-of { margin-top: -44px; }
+.calendar.rows-6 { grid-auto-rows: 34px; }
+.wedding-of { margin-top: -56px; }
+.monogram { margin-top: -66px; }
+.final-text { margin-top: -96px; }
+.arc-title { margin-top: -22px; }
+.ground--s1 .photo-ground--one, .ground--s1 .photo-ground--one img { height: 418px; }
+.photo-ground--one img, .ground--s2 .photo-ground--one img {
+  -webkit-mask-image: linear-gradient(to top, #000 91%, transparent 100%);
+          mask-image: linear-gradient(to top, #000 91%, transparent 100%);
+}
