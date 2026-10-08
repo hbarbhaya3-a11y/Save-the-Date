@@ -49,11 +49,9 @@ function buildText() {
   const mon = MONTHS[CONFIG.month - 1];
   $("nameA").textContent = a;
   $("nameB").textContent = `& ${b}`;
-  $("finalNames").textContent = `${a} & ${b}`;
-  document.querySelector(".mark-min .l1").textContent = CONFIG.initials[0];
-  document.querySelector(".mark-min .l2").textContent = CONFIG.initials[1];
-  $("monoA").textContent = CONFIG.initials[0];
-  $("monoB").textContent = CONFIG.initials[1];
+  document.querySelectorAll(".logo__H").forEach((t) => { t.textContent = CONFIG.initials[0]; });
+  document.querySelectorAll(".logo__S").forEach((t) => { t.textContent = CONFIG.initials[1]; });
+  document.querySelectorAll(".logo__names").forEach((t) => { t.textContent = `${a} & ${b}`; });
   $("calTitle").textContent = `${CONFIG.day} ${mon.slice(0, 3)} ${CONFIG.year}`;
   $("dateLine").innerHTML = `${CONFIG.day}<sup>${ordinal(CONFIG.day)}</sup> ${mon.slice(0, 3).toUpperCase()} ${CONFIG.year}`;
   $("finalDate").innerHTML = `${CONFIG.day}<sup>${ordinal(CONFIG.day)}</sup> ${mon} ${CONFIG.year}`;
@@ -130,6 +128,8 @@ const at = (sec, fn) => { const id = runId; timers.push(setTimeout(() => id === 
 const show = (id, t) => at(t, () => $(id).classList.add("on"));
 const hide = (id, t) => at(t, () => { $(id).classList.add("off"); setTimeout(() => $(id).classList.remove("on", "off"), 800); });
 const reveal = (el, t) => at(t, () => el.classList.add("in"));
+const bgOn = (id, t) => at(t, () => $(id).classList.add("on"));
+const bgOff = (id, t) => at(t, () => $(id).classList.remove("on"));
 
 function reset() {
   timers.forEach(clearTimeout);
@@ -147,22 +147,22 @@ function play() {
   const music = $("music");
   if (music.dataset.ready) { try { music.currentTime = 0; } catch (e) {} }
 
-  /* 0 · opening mark */
+  /* 0 · opening: H & S logo */
   show("sOpen", 0);
-  document.querySelectorAll(".mark-min__letters span").forEach((s, i) => reveal(s, 0.2 + i * 0.25));
-  reveal($("openDivider"), 1.0);
-  hide("sOpen", 2.9);
+  reveal($("logoOpen"), 0.2);
+  hide("sOpen", 3.9);
 
-  /* 1 · couple */
-  show("sCouple", 3.2);
-  reveal($("tagline"), 4.4);
-  hide("sCouple", 8.1);
+  /* 1 · couple (Roots Cafe behind) */
+  bgOn("bgCafe", 4.0);
+  show("sCouple", 4.2);
+  reveal($("tagline"), 5.4);
+  hide("sCouple", 8.9);
 
   /* 2 · calendar */
-  show("sCal", 8.4);
+  show("sCal", 9.2);
   const heart = $("heart");
   let route;
-  at(9.8, () => {
+  at(10.6, () => {
     route = heartRoute();
     const p = route[0];
     heart.animate([
@@ -172,7 +172,7 @@ function play() {
     ], { duration: 600, easing: "ease-out", fill: "forwards" });
     heart.classList.add("beat");
   });
-  at(10.7, () => {
+  at(11.5, () => {
     heart.classList.remove("beat");
     const n = route.length - 1;
     const frames = [];
@@ -190,36 +190,39 @@ function play() {
       heart.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 250, fill: "forwards" });
     };
   });
-  hide("sCal", 15.3);
-  at(15.3, () => heart.animate([{ opacity: 0 }], { duration: 400, fill: "forwards" }));
+  hide("sCal", 16.1);
+  bgOff("bgCafe", 16.1);
+  at(16.1, () => heart.animate([{ opacity: 0 }], { duration: 400, fill: "forwards" }));
 
   /* 3 · names */
-  show("sNames", 15.6);
-  reveal($("nameA"), 15.8);
-  reveal($("nameB"), 16.8);
-  [...$("stdLine").children].forEach((c, i) => reveal(c, 17.9 + i * 0.05));
-  reveal($("namesDivider"), 18.6);
-  reveal($("dateLine"), 18.9);
-  hide("sNames", 20.1);
+  bgOn("bgTemple", 16.2);
+  show("sNames", 16.4);
+  reveal($("nameA"), 16.6);
+  reveal($("nameB"), 17.6);
+  [...$("stdLine").children].forEach((c, i) => reveal(c, 18.7 + i * 0.05));
+  reveal($("namesDivider"), 19.4);
+  reveal($("dateLine"), 19.7);
+  hide("sNames", 20.9);
+  bgOff("bgTemple", 20.9);
 
   /* 4 · venues */
-  show("sPlace", 20.4);
-  reveal(document.querySelector(".place__lead"), 20.5);
-  reveal(document.querySelector(".print--a"), 20.9);
-  reveal(document.querySelector(".print--b"), 21.9);
-  reveal($("city"), 22.9);
-  hide("sPlace", 24.9);
+  show("sPlace", 21.2);
+  reveal(document.querySelector(".place__lead"), 21.3);
+  reveal(document.querySelector(".print--a"), 21.7);
+  reveal(document.querySelector(".print--b"), 22.7);
+  reveal($("city"), 23.7);
+  hide("sPlace", 25.7);
 
   /* 5 · final card */
-  show("sFinal", 25.2);
-  reveal($("finalNames"), 26.6);
-  reveal(document.querySelector(".final__std"), 27.0);
-  reveal($("finalDivider"), 27.3);
-  reveal($("finalDate"), 27.5);
-  reveal(document.querySelector(".final__tag"), 28.0);
+  bgOn("bgTemple", 25.8);
+  show("sFinal", 26.0);
+  reveal($("logoFinal"), 26.2);
+  reveal(document.querySelector(".final__std"), 28.6);
+  reveal($("finalDate"), 29.0);
+  reveal(document.querySelector(".final__tag"), 29.5);
 
-  at(31.0, () => {
-    if (CONFIG.loop) { hide("sFinal", 0); at(0.9, play); }
+  at(32.6, () => {
+    if (CONFIG.loop) { hide("sFinal", 0); bgOff("bgTemple", 0); at(0.9, play); }
     else $("replayBtn").classList.add("show");
   });
 }
