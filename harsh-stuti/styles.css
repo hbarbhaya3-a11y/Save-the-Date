@@ -590,3 +590,32 @@ body::before {
 .monogram { margin-top: -86px; }
 .monogram .logo { transform: scale(.86); }
 .final-text { margin-top: -212px; }
+
+/* ===== grounded couple: feet on the courtyard at the bottom, soft contact shadow ===== */
+.has-couple .art--couple { bottom: calc(4px + env(safe-area-inset-bottom, 0px)); height: calc(372px + min(0px, var(--stage-h) - 960px) * .6); }
+.couple-shadow {
+  position: absolute; left: 74%; bottom: calc(-6px + env(safe-area-inset-bottom, 0px));
+  width: 230px; height: 30px; transform: translateX(-50%);
+  background: radial-gradient(closest-side, rgba(40, 28, 22, .55), rgba(40, 28, 22, .25) 55%, rgba(40, 28, 22, 0));
+  filter: blur(2px);
+  display: none;
+}
+.has-couple .couple-shadow { display: block; }
+.couple-shadow { bottom: calc(-2px + env(safe-area-inset-bottom, 0px)); width: 250px; height: 34px;
+  background: radial-gradient(closest-side, rgba(35, 24, 18, .7), rgba(35, 24, 18, .35) 50%, rgba(35, 24, 18, 0)); }
+.has-couple .art--couple { bottom: calc(16px + env(safe-area-inset-bottom, 0px)); }
+.couple-shadow { bottom: calc(4px + env(safe-area-inset-bottom, 0px)); width: 260px; height: 30px; left: calc(74% - 6px); }
+.couple-shadow { bottom: calc(1px + env(safe-area-inset-bottom, 0px)); height: 26px; width: 280px; filter: blur(1.5px);
+  background: radial-gradient(closest-side, rgba(30, 20, 15, .8), rgba(30, 20, 15, .45) 55%, rgba(30, 20, 15, 0)); }
+.couple-shadow { bottom: calc(-4px + env(safe-area-inset-bottom, 0px)); height: 40px; width: 330px; left: calc(74% - 4px); filter: blur(2px);
+  background: radial-gradient(closest-side, rgba(30, 20, 15, .75), rgba(30, 20, 15, .4) 55%, rgba(30, 20, 15, 0)); }
+
+/* soft ground at the base of scene 1 so the couple stands on something */
+.ground--s1 .photo-ground::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 120px;
+  background: linear-gradient(to top, rgba(236, 226, 212, .97) 0, rgba(236, 226, 212, .85) 30%, rgba(236, 226, 212, 0) 100%);
+}
+.couple-shadow { bottom: calc(10px + env(safe-area-inset-bottom, 0px)); height: 22px; width: 300px; filter: blur(3px);
+  background: radial-gradient(closest-side, rgba(70, 50, 40, .55), rgba(70, 50, 40, .25) 60%, rgba(70, 50, 40, 0)); }
+.has-couple .art--couple { bottom: calc(18px + env(safe-area-inset-bottom, 0px)); }
+.couple-shadow { background: radial-gradient(closest-side, rgba(70, 50, 40, .7), rgba(70, 50, 40, .3) 60%, rgba(70, 50, 40, 0)); }
