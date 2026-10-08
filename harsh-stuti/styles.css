@@ -568,3 +568,25 @@ body::before {
 
 /* couple to the side so the temple stays visible */
 .has-couple .art--couple { left: 74%; }
+
+/* ===== v4: venue photos full width, same height (no cropping), crisp couple ===== */
+.photo-ground--one img, .ground--s2 .photo-ground--one img, .ground--s1 .photo-ground--one img {
+  left: 0; transform: none; width: 540px; object-fit: fill;
+  height: calc(530px + min(0px, var(--stage-h) - 960px));
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 7%);
+          mask-image: linear-gradient(to bottom, transparent 0, #000 7%);
+}
+.art--couple { image-rendering: auto; }
+
+/* tighten the top block to sit above the photos */
+.arc-title { margin-top: -34px; }
+.month-block { margin-top: -62px; }
+.month { font-size: 24px; }
+.year { font-size: 19px; }
+.calendar { margin-top: -82px; }
+.calendar, .calendar.rows-6 { grid-auto-rows: 30px; }
+.wedding-of { margin-top: -132px; }
+.wedding-of__names { font-size: 54px; }
+.monogram { margin-top: -86px; }
+.monogram .logo { transform: scale(.86); }
+.final-text { margin-top: -212px; }

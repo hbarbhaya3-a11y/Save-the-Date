@@ -34,7 +34,8 @@ if len(sys.argv) > 3:
     bg[sy0:sy1, sx0:sx1] = True
 # close tiny specks inside the backdrop
 bgimg = Image.fromarray(bg.astype(np.uint8) * 255, "L").filter(ImageFilter.MaxFilter(3)).filter(ImageFilter.MinFilter(3))
-alpha = (255 - np.asarray(bgimg.filter(ImageFilter.MaxFilter(3)).filter(ImageFilter.GaussianBlur(1.3)))).astype(np.float32)
+feather = float(__import__("os").environ.get("FEATHER", "1.3"))
+alpha = (255 - np.asarray(bgimg.filter(ImageFilter.MaxFilter(3)).filter(ImageFilter.GaussianBlur(feather)))).astype(np.float32)
 # fade the paper-white fringe hugging the figures
 band = np.asarray(bgimg.filter(ImageFilter.MaxFilter(9))) > 0
 paperness = np.clip((lum - 205) / 30, 0, 1) * np.clip((14 - sat) / 14, 0, 1)
