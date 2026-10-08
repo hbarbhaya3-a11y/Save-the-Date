@@ -293,7 +293,7 @@ html, body {
 .ground2__industry { right: -20px; bottom: 26px; width: 250px; }
 .ground2__bushes   { left: -10px; width: 560px; bottom: -6px; }
 .ground2__map { position: absolute; left: 180px; bottom: 56px; width: 170px; height: 200px; }
-.ground2__map img { position: absolute; inset: 0; width: 100%; height: 100%; }
+.ground2__map img { position: absolute; inset: 0; width: 100%; height: 100%; opacity: .75; filter: blur(.4px); }
 .ground2__label {
   position: absolute; left: 30px; top: 62px; white-space: nowrap;
   font-family: "Pinyon Script", cursive; font-size: 30px; color: #5b3a2c;
