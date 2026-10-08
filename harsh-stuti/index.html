@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Save the Date · Harsh &amp; Stuti</title>
+  <meta name="description" content="Harsh &amp; Stuti – Save the Date – 30 November 2026" />
+  <meta name="theme-color" content="#f3d9da" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="format-detection" content="telephone=no" />
+
+  <!-- link preview (WhatsApp, Instagram, iMessage …) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Save the Date · Harsh &amp; Stuti" />
+  <meta property="og:description" content="30 November 2026 · A new chapter together. Tap to open our invitation." />
+  <meta property="og:url" content="https://hbarbhaya3-a11y.github.io/Save-the-Date/harsh-stuti/" />
+  <meta property="og:image" content="https://hbarbhaya3-a11y.github.io/Save-the-Date/harsh-stuti/assets/og.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 58'%3E%3Cpath d='M32 56C14 42 2 31 2 17 2 8 9 1 18 1c6 0 11 3 14 8 3-5 8-8 14-8 9 0 16 7 16 16 0 14-12 25-30 39z' fill='%23b8506a'/%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Great+Vibes&display=swap" rel="stylesheet" />
+  <link rel="preload" as="image" href="assets/background.webp" />
+  <link rel="preload" as="image" href="assets/photo.jpg" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="viewport">
+    <div class="stage" id="stage">
+
+      <!-- persistent paper + florals -->
+      <div class="bg">
+        <img class="bg__paper" src="assets/background.webp" alt="" />
+        <img class="bg__floral bg__floral--tl" src="assets/florals.webp" alt="" />
+        <img class="bg__floral bg__floral--br" src="assets/florals.webp" alt="" />
+        <div class="petals" id="petals" aria-hidden="true"></div>
+      </div>
+
+      <!-- 0 · opening mark (logo option 4: minimal) -->
+      <section class="scene s-open" id="sOpen">
+        <div class="mark-min">
+          <div class="mark-min__letters"><span class="l1">H</span><span class="amp">&amp;</span><span class="l2">S</span></div>
+          <div class="divider" id="openDivider"><span class="line"></span><span class="dheart">♥</span><span class="line"></span></div>
+        </div>
+      </section>
+
+      <!-- 1 · couple moment -->
+      <section class="scene s-couple" id="sCouple">
+        <figure class="photo">
+          <div class="photo__frame"><img src="assets/photo.jpg" alt="Harsh and Stuti" /></div>
+          <img class="photo__floral" src="assets/florals.webp" alt="" />
+        </figure>
+        <p class="script tagline wipe" id="tagline">A new chapter together</p>
+      </section>
+
+      <!-- 2 · calendar reveal -->
+      <section class="scene s-cal" id="sCal">
+        <div class="cal-card" id="calCard">
+          <img class="cal-card__floral" src="assets/florals.webp" alt="" />
+          <p class="cal-card__title" id="calTitle">30 Nov 2026</p>
+          <div class="calendar" id="calendar" role="grid" aria-label="Calendar"></div>
+        </div>
+        <div class="heart" id="heart" aria-hidden="true">
+          <svg viewBox="0 0 64 58"><defs><radialGradient id="hg" cx="35%" cy="30%" r="80%"><stop offset="0" stop-color="#e9798f"/><stop offset=".55" stop-color="#c94b67"/><stop offset="1" stop-color="#a5304d"/></radialGradient></defs><path d="M32 56C14 42 2 31 2 17 2 8 9 1 18 1c6 0 11 3 14 8 3-5 8-8 14-8 9 0 16 7 16 16 0 14-12 25-30 39z" fill="url(#hg)"/><ellipse cx="17" cy="14" rx="6" ry="4" fill="#fff" opacity=".35" transform="rotate(-30 17 14)"/></svg>
+        </div>
+      </section>
+
+      <!-- 3 · name reveal -->
+      <section class="scene s-names" id="sNames">
+        <h1 class="names">
+          <span class="script names__a wipe" id="nameA">Harsh</span>
+          <span class="script names__b wipe" id="nameB">&amp; Stuti</span>
+        </h1>
+        <p class="caps std" id="stdLine" aria-label="Save the date"></p>
+        <div class="divider" id="namesDivider"><span class="line"></span><span class="dheart">♥</span><span class="line"></span></div>
+        <p class="caps date rise" id="dateLine">30<sup>th</sup> NOV 2026</p>
+      </section>
+
+      <!-- 4 · location: venue photos, used as they are -->
+      <section class="scene s-place" id="sPlace">
+        <p class="script place__lead rise">See you at</p>
+        <div class="prints">
+          <figure class="print print--a">
+            <img src="assets/cafe.jpg" alt="Roots Cafe, Gurgaon" />
+            <figcaption class="script">Roots Cafe</figcaption>
+          </figure>
+          <figure class="print print--b">
+            <img src="assets/temple.jpg" alt="Shri 1008 Mallinath Digamber Jain Temple, Gurgaon" />
+            <figcaption class="script">Mallinath Jain Temple</figcaption>
+          </figure>
+        </div>
+        <p class="caps place__city rise" id="city">Gurgaon</p>
+      </section>
+
+      <!-- 5 · final card (logo option 1: floral monogram) -->
+      <section class="scene s-final" id="sFinal">
+        <div class="mono">
+          <svg class="mono__ring" viewBox="0 0 220 220" aria-hidden="true">
+            <circle cx="110" cy="110" r="100" fill="none" stroke="currentColor" stroke-width="1.6"/>
+            <path d="M18 92A96 96 0 0 1 70 22" fill="none" stroke="currentColor" stroke-width="1" opacity=".7"/>
+          </svg>
+          <div class="mono__letters"><span id="monoA">H</span><span class="mono__bar"></span><span id="monoB">S</span></div>
+          <img class="mono__floral" src="assets/florals.webp" alt="" />
+        </div>
+        <p class="script final__names rise" id="finalNames">Harsh &amp; Stuti</p>
+        <p class="caps final__std rise">Save the Date</p>
+        <div class="divider rise" id="finalDivider"><span class="line"></span><span class="dheart">♥</span><span class="line"></span></div>
+        <p class="caps final__date rise" id="finalDate">30<sup>th</sup> November 2026</p>
+        <p class="script final__tag rise">A new chapter together</p>
+      </section>
+
+      <button class="ctrl ctrl--replay" id="replayBtn" type="button" aria-label="Replay">
+        <svg viewBox="0 0 24 24"><path d="M12 5V1L7 6l5 5V7a6 6 0 1 1-6 6H4a8 8 0 1 0 8-8z" fill="currentColor"/></svg>
+        <span>Replay</span>
+      </button>
+      <button class="ctrl ctrl--sound" id="soundBtn" type="button" aria-label="Toggle music" hidden>
+        <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z" fill="currentColor"/></svg>
+      </button>
+    </div>
+  </main>
+
+  <!-- Optional background music: drop an mp3 at assets/music.mp3 -->
+  <audio id="music" src="assets/music.mp3" preload="auto" loop></audio>
+  <script src="script.js"></script>
+</body>
+</html>

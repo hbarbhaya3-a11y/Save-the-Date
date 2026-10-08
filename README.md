@@ -1,5 +1,7 @@
 # Save the Date: Abhishek & Deepa
 
+Also in this repo: [Harsh & Stuti](harsh-stuti/), a baby-pink version.
+
 An animated, mobile-first (9:16) wedding "Save the Date" invitation. It is built with plain HTML, CSS, JavaScript and hand-drawn SVG. There are no build steps and no dependencies.
 
 ## Run it
@@ -50,10 +52,10 @@ The page uses painted watercolour artwork from `assets/art/` when those files ar
 | `skyline.webp` | temple and Bhilai steel-plant skyline |
 | `florals.webp` | peach flower corner |
 
-To turn a painting on a white background into a transparent PNG:
+To turn a painting on a white background into a transparent image (`--mode flood` keeps white clothing solid; use it for people):
 
 ```
-python3 tools/prepare_art.py couple-from-canva.jpg assets/art/couple.webp
+python3 tools/prepare_art.py couple-from-canva.jpg assets/art/couple.webp --mode flood
 ```
 
 ## Music (optional)
