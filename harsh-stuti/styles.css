@@ -107,11 +107,12 @@ body::before {
 .logo__mark { width: 380px; height: 300px; overflow: visible; }
 .logo__H { font-family: "Pinyon Script", var(--script); }
 .logo__S { font-family: var(--script); }
-.logo__H { font-size: 250px; fill: #1e1a1b; }
+.logo__H { font-size: 250px; fill: #5d4a50; }
 .logo__S { font-size: 190px; }
 .logo__H, .logo__S, .logo__dot { opacity: 0; transition: opacity 1.1s ease, transform 1.3s cubic-bezier(.2, .7, .2, 1), filter 1.1s ease; filter: blur(3px); }
 .logo__H { transform: translate(-14px, 0); }
 .logo__S { transform: translate(14px, 0); transition-delay: .45s; }
+.logo__swirl { opacity: .55; }
 .logo__swirl path { stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 1.8s ease .3s; }
 .logo__swirl path:nth-child(2) { transition-delay: .7s; }
 .logo__swirl path:nth-child(3) { transition-delay: 1.1s; transition-duration: 1s; }
@@ -120,10 +121,10 @@ body::before {
 .logo__names {
   margin-top: -8px;
   font-family: var(--serif); font-weight: 500; text-transform: uppercase;
-  font-size: 22px; letter-spacing: 9px; margin-right: -9px; color: #2a2324;
+  font-size: 20px; letter-spacing: 9px; margin-right: -9px; color: #6a5257;
   opacity: 0; letter-spacing: 2px; transition: opacity 1s ease 1.4s, letter-spacing 1.6s ease 1.4s, margin .1s;
 }
-.logo__divider { width: 250px; height: 20px; margin-top: 10px; overflow: visible; }
+.logo__divider { width: 220px; height: 18px; margin-top: 10px; overflow: visible; opacity: .75; }
 .logo__divider path { stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 1.2s ease 1.9s; }
 .logo__divider path:not([pathLength]) { stroke-dasharray: none; opacity: 0; transition: opacity .6s ease 2.4s; }
 
@@ -220,24 +221,26 @@ body::before {
 .date { font-size: 30px; letter-spacing: 6px; margin-top: 14px; margin-right: -6px; }
 
 /* ---------------- 4 · place ---------------- */
-.place__lead { font-size: 50px; margin-bottom: 18px; }
-.prints { position: relative; width: 500px; height: 540px; }
+.place__lead { font-size: 48px; margin-bottom: 10px; }
+.prints { position: relative; width: 500px; height: 640px; }
 .print {
-  position: absolute; width: 270px;
-  padding: 12px 12px 0;
+  position: absolute; width: 232px;
+  padding: 10px 10px 0;
   background: var(--card);
-  box-shadow: 0 16px 34px rgba(110, 50, 70, .28), 0 1px 3px rgba(110, 50, 70, .2);
+  box-shadow: 0 14px 30px rgba(110, 50, 70, .26), 0 1px 3px rgba(110, 50, 70, .2);
   opacity: 0;
   transition: opacity .8s ease, transform 1.2s cubic-bezier(.2, .8, .2, 1);
 }
 .print img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; }
-.print figcaption { font-size: 25px; color: var(--rose-deep); padding: 8px 4px 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.print--a { left: -4px; top: 0; transform: translate(-60px, 30px) rotate(-14deg); }
-.print--b { right: -4px; bottom: 0; transform: translate(60px, 30px) rotate(14deg); }
-.print--b figcaption { font-size: 20px; }
+.print figcaption { display: flex; flex-direction: column; align-items: center; padding: 6px 4px 10px; }
+.print figcaption .script { font-size: 23px; color: var(--rose-deep); white-space: nowrap; }
+.print figcaption small { font-size: 11px; letter-spacing: 3px; margin-top: 1px; color: #9a6b77; }
+.print--a { left: 0; top: 0; transform: translate(-60px, 30px) rotate(-14deg); }
+.print--b { right: 0; top: 150px; transform: translate(60px, 30px) rotate(14deg); }
+.print--c { left: 40px; top: 330px; transform: translate(-60px, 40px) rotate(-12deg); }
 .print--a.in { opacity: 1; transform: rotate(-6deg); }
 .print--b.in { opacity: 1; transform: rotate(5deg); }
-.place__city { font-size: 26px; letter-spacing: 10px; margin-top: 24px; margin-right: -10px; }
+.print--c.in { opacity: 1; transform: rotate(-3deg); }
 
 /* ---------------- 5 · final ---------------- */
 .final__std { font-size: 21px; letter-spacing: 8px; margin-top: 18px; margin-right: -8px; }

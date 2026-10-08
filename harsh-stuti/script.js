@@ -9,7 +9,6 @@ const CONFIG = {
   year: 2026,
   month: 11,          // 1 = January … 12 = December
   day: 30,
-  city: "Gurgaon",
   weekStartsOn: 0,    // 0 = Sunday, 1 = Monday
   loop: false,
 };
@@ -55,7 +54,6 @@ function buildText() {
   $("calTitle").textContent = `${CONFIG.day} ${mon.slice(0, 3)} ${CONFIG.year}`;
   $("dateLine").innerHTML = `${CONFIG.day}<sup>${ordinal(CONFIG.day)}</sup> ${mon.slice(0, 3).toUpperCase()} ${CONFIG.year}`;
   $("finalDate").innerHTML = `${CONFIG.day}<sup>${ordinal(CONFIG.day)}</sup> ${mon} ${CONFIG.year}`;
-  $("city").textContent = CONFIG.city;
   document.title = `Save the Date · ${a} & ${b}`;
 
   $("stdLine").innerHTML = "";
@@ -209,19 +207,19 @@ function play() {
   show("sPlace", 21.2);
   reveal(document.querySelector(".place__lead"), 21.3);
   reveal(document.querySelector(".print--a"), 21.7);
-  reveal(document.querySelector(".print--b"), 22.7);
-  reveal($("city"), 23.7);
-  hide("sPlace", 25.7);
+  reveal(document.querySelector(".print--b"), 22.6);
+  reveal(document.querySelector(".print--c"), 23.5);
+  hide("sPlace", 26.5);
 
   /* 5 · final card */
-  bgOn("bgTemple", 25.8);
-  show("sFinal", 26.0);
-  reveal($("logoFinal"), 26.2);
-  reveal(document.querySelector(".final__std"), 28.6);
-  reveal($("finalDate"), 29.0);
-  reveal(document.querySelector(".final__tag"), 29.5);
+  bgOn("bgTemple", 26.6);
+  show("sFinal", 26.8);
+  reveal($("logoFinal"), 27.0);
+  reveal(document.querySelector(".final__std"), 29.4);
+  reveal($("finalDate"), 29.8);
+  reveal(document.querySelector(".final__tag"), 30.3);
 
-  at(32.6, () => {
+  at(33.4, () => {
     if (CONFIG.loop) { hide("sFinal", 0); bgOff("bgTemple", 0); at(0.9, play); }
     else $("replayBtn").classList.add("show");
   });
