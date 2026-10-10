@@ -866,3 +866,10 @@ body::before {
 .stage.no-anim .shared-logo, .stage.no-anim .shared-names { transition: none !important; }
 /* crisp temple painting: no haze filter */
 .ground--s1 .photo-ground--one img { filter: none; image-rendering: -webkit-optimize-contrast; }
+/* ChatGPT painting already fades into paper: light mask only */
+.ground--s1 .photo-ground--one img {
+  width: 480px; height: 480px; bottom: 14px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, #000 70%, transparent 100%);
+          mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, #000 70%, transparent 100%);
+}
+.ground--s1 .photo-ground--one img { width: 436px; height: 436px; bottom: 44px; }

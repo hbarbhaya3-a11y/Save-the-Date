@@ -148,7 +148,7 @@ function heartRoute() {
   if (img) {
     const s = parseFloat(getComputedStyle(stage).getPropertyValue("--scale")) || 1;
     const sr = stage.getBoundingClientRect(), r = img.getBoundingClientRect();
-    pts.push({ x: (r.left - sr.left) / s + (r.width / s) * 0.715, y: (r.top - sr.top) / s + (r.height / s) * 0.46 });
+    pts.push({ x: (r.left - sr.left) / s + (r.width / s) * 0.69, y: (r.top - sr.top) / s + (r.height / s) * 0.5 });
     pts.push({ x: (pts[0].x + lp.x) / 2, y: (pts[0].y + lp.y) / 2 });
   } else {
     pts.push({ x: lp.x, y: lp.y + 70 });
