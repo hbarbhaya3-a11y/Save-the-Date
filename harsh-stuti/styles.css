@@ -698,3 +698,13 @@ body::before {
 .bell5 { animation-duration: 3.5s; animation-delay: -1.1s; }
 @keyframes swing { from { transform: rotate(-4deg); } to { transform: rotate(4deg); } }
 @media (prefers-reduced-motion: reduce) { .bell { animation: none; } }
+
+/* ===== page 2 header: logo + names together, centred, shown as the page opens ===== */
+.mini-logo { top: 14px; transform: scale(.36); margin-left: -203px; }
+.scene--calendar .wedding-of { top: 112px; margin-top: 0; translate: 0 max(0px, var(--shift)); }
+.scene--calendar .wedding-of__names { margin-top: 0; font-size: 58px; transition-duration: 1.6s; }
+/* NOVEMBER 2026 on one line */
+.scene--calendar .month-block { top: 210px; margin-top: 0; display: flex; justify-content: center; align-items: baseline; gap: 12px; }
+.scene--calendar .month, .scene--calendar .year { font-size: 28px; letter-spacing: 3px; margin: 0; transform: none; }
+.scene--calendar .calendar { top: 258px; margin-top: 0; }
+.scene--calendar .calendar, .scene--calendar .calendar.rows-6 { grid-auto-rows: 31px; }

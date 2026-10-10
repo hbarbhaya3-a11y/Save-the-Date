@@ -288,10 +288,10 @@ function play() {
 
   // "FOR THE WEDDING OF" + names
   labelChars.forEach((ch, i) => at(21.0 + i * 0.06, () => ch.classList.add("in")));
-  at(22.0, () => $("coupleNames").classList.add("in"));
+  at(8.7, () => $("coupleNames").classList.add("in"));
 
   // ending: hold on the calendar page
-  at(26.7, () => {
+  at(24.2, () => {
     if (CONFIG.loop) play();
     else $("replayBtn").classList.add("show");
   });
