@@ -777,3 +777,6 @@ body::before {
 /* page 2 → page 3: soft crossfade */
 .scene--final { z-index: 4; opacity: 0; transition: opacity .9s ease; }
 .scene--final.is-active { opacity: 1; }
+
+.p3-std { font-family: "Cormorant Garamond", serif; font-weight: 600; font-size: 38px; color: #6b1622; margin-bottom: 2px; }
+.p3-logo { transform: scale(.72); margin: -46px 0 -58px; }
