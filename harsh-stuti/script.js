@@ -212,6 +212,7 @@ function reset() {
 
 function play() {
   reset();
+  $("scene3").classList.remove("is-active");
   const music = $("music");
   if (!music.paused || music.dataset.ready) { try { music.currentTime = 0; } catch (e) {} }
 
@@ -287,11 +288,13 @@ function play() {
   });
 
   // "FOR THE WEDDING OF" + names
-  labelChars.forEach((ch, i) => at(23.0 + i * 0.06, () => ch.classList.add("in")));
+  labelChars.forEach((ch) => ch.classList.add("in"));
   at(8.7, () => $("coupleNames").classList.add("in"));
 
-  // ending: hold on the calendar page
-  at(26.2, () => {
+  // page 3: closing card, everything at once
+  at(24.0, () => $("scene3").classList.add("is-active"));
+  at(25.0, () => $("scene1").classList.remove("is-active"));
+  at(29.0, () => {
     if (CONFIG.loop) play();
     else $("replayBtn").classList.add("show");
   });

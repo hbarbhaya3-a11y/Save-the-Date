@@ -729,3 +729,51 @@ body::before {
 .mini-logo { top: 290px; transform: scale(.34); }
 .scene--calendar .wedding-of { top: 378px; }
 .scene--calendar .wedding-of__names { font-size: 56px; transition: clip-path 1.6s cubic-bezier(.3, .2, .6, .9); }
+
+/* ===== page 2 final block: logo, for the wedding of, names, date ===== */
+.scene--calendar .month-block { top: 24px; }
+.scene--calendar .month, .scene--calendar .year { font-size: 26px; }
+.scene--calendar .calendar { top: 64px; }
+.scene--calendar .calendar, .scene--calendar .calendar.rows-6 { grid-auto-rows: 28px; }
+.scene--calendar .calendar .cell { font-size: 20px; }
+.mini-logo { top: 252px; transform: scale(.3); }
+.scene--calendar .wedding-of { top: 334px; }
+.scene--calendar .wedding-of__label { display: block; font-family: "Cormorant Garamond", serif; font-weight: 600; font-size: 15px; letter-spacing: 5px; margin-right: -5px; color: #7a2a35; min-height: 18px; }
+.scene--calendar .wedding-of__names { font-size: 52px; margin-top: -10px; }
+.wedding-of__date {
+  font-family: "Cormorant Garamond", serif; font-weight: 600; font-size: 19px; letter-spacing: 3px; color: #6b1622;
+  margin-top: -6px; opacity: 0; transform: translateY(6px); transition: opacity 1s ease, transform 1s ease;
+  font-variant-numeric: lining-nums;
+}
+.wedding-of__date sup { font-size: .6em; vertical-align: .55em; letter-spacing: 0; }
+.wedding-of__date.in { opacity: 1; transform: none; }
+.wedding-of__date.out { opacity: 0; }
+
+/* ===== page 2 back to: NOVEMBER 2026, calendar, logo + names, temple ===== */
+.scene--calendar .wedding-of__label { display: none; }
+.scene--calendar .month-block { top: 34px; }
+.scene--calendar .month, .scene--calendar .year { font-size: 28px; }
+.scene--calendar .calendar { top: 80px; }
+.scene--calendar .calendar, .scene--calendar .calendar.rows-6 { grid-auto-rows: 30px; }
+.scene--calendar .calendar .cell { font-size: 21px; }
+.mini-logo { top: 290px; transform: scale(.34); }
+.scene--calendar .wedding-of { top: 378px; }
+.scene--calendar .wedding-of__names { font-size: 56px; margin-top: 0; }
+
+/* ===== page 3: closing card, no animation ===== */
+.p3-bg { opacity: 1; }
+.p3-card { position: absolute; left: 0; right: 0; top: 0; bottom: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; z-index: 1; padding-top: 30px; }
+.p3-logo { width: 380px; height: 300px; transform: scale(.78); margin: -40px 0 -50px; }
+.p3-logo .logo__mark { width: 380px; height: 300px; overflow: visible; }
+.p3-logo .logo__H, .p3-logo .logo__S { opacity: 1; transform: none; filter: none; }
+.p3-logo .logo__swirl path { stroke-dashoffset: 0; }
+.p3-logo .logo__heart { transform: scale(1); }
+.p3-wedof { font-family: "Cormorant Garamond", serif; font-style: italic; font-size: 26px; color: #7a2a35; }
+.p3-names { font-family: "Great Vibes", cursive; font-size: 68px; line-height: 1.3; color: #6b1622; padding: .2em .3em; margin-top: -.25em; }
+.p3-names .amp { font-family: "Cormorant Garamond", serif; font-style: italic; font-size: 32px; margin: 0 8px; color: #7a2a35; }
+.p3-date { font-family: "Cormorant Garamond", serif; font-weight: 600; font-size: 26px; letter-spacing: 3px; color: #6b1622; margin-top: -4px; font-variant-numeric: lining-nums; }
+.p3-date sup { font-size: .6em; vertical-align: .55em; letter-spacing: 0; }
+
+/* page 2 → page 3: soft crossfade */
+.scene--final { z-index: 4; opacity: 0; transition: opacity .9s ease; }
+.scene--final.is-active { opacity: 1; }
