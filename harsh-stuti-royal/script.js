@@ -91,48 +91,73 @@ function reset() {
   stage.querySelectorAll(".in, .on, .up, .away, .show, .shine").forEach((n) => n.classList.remove("in", "on", "up", "away", "show", "shine"));
 }
 
+function confettiBurst() {
+  const box = $("confetti");
+  box.innerHTML = "";
+  const colors = ["#d4a84a", "#f0d89a", "#b8893d", "#fff3c4", "#c94b67"];
+  for (let i = 0; i < 46; i++) {
+    const c = document.createElement("i");
+    const w = 4 + Math.random() * 5, h = w * (0.4 + Math.random() * 0.8);
+    c.style.width = `${w}px`; c.style.height = `${h}px`;
+    c.style.background = colors[i % colors.length];
+    box.appendChild(c);
+    const ang = Math.random() * Math.PI * 2, dist = 90 + Math.random() * 190;
+    const dx = Math.cos(ang) * dist, dy = Math.sin(ang) * dist * 0.7;
+    c.animate([
+      { transform: "translate(0,0) rotate(0deg)", opacity: 1 },
+      { transform: `translate(${dx}px, ${dy}px) rotate(${Math.random() * 540}deg)`, opacity: 1, offset: 0.55 },
+      { transform: `translate(${dx * 1.1}px, ${dy + 160}px) rotate(${Math.random() * 900}deg)`, opacity: 0 },
+    ], { duration: 2200 + Math.random() * 900, easing: "cubic-bezier(.2,.7,.4,1)", fill: "forwards" });
+  }
+}
+
 function play() {
   reset();
-  const fades = ["kicker", "rule1", "date1", "note1", "amp", "archCap", "archDate", "kicker2", "date2"];
-  fades.forEach((id) => $(id).classList.add("fade"));
+  $("confetti").innerHTML = "";
+  ["kicker", "rule1", "date1", "amp"].forEach((id) => $(id).classList.add("fade"));
+  $("arch").classList.remove("shrink");
+  $("finale").classList.remove("on");
 
-  /* frame, corners, mandala */
+  /* 1 · frame, corners, mandala */
   add($("frame"), "in", 0.1);
-  document.querySelectorAll(".corner").forEach((c, i) => add(c, "in", 1.4 + i * 0.15));
+  document.querySelectorAll(".corner").forEach((c, i) => add(c, "in", 1.2 + i * 0.15));
   add($("mandala"), "in", 0.4);
 
-  /* scene A – names */
-  add($("sNames"), "on", 1.8);
-  add($("kicker"), "in", 2.0);
-  add($("mandala"), "up", 2.8);
-  add($("nameA"), "in", 3.4);
-  add($("nameA"), "shine", 3.6);
-  add($("amp"), "in", 5.0);
-  add($("nameB"), "in", 5.4);
-  add($("nameB"), "shine", 5.6);
-  add($("rule1"), "in", 7.4);
-  add($("date1"), "in", 7.8);
-  add($("note1"), "in", 8.4);
-  at(10.6, () => $("sNames").classList.remove("on"));
+  /* 2 · save the date */
+  add($("sNames"), "on", 2.6);
+  add($("mandala"), "up", 3.0);
+  add($("kicker"), "in", 3.6);
 
-  /* scene B – painting in the gold arch */
-  add($("sArch"), "on", 11.3);
-  add($("arch"), "in", 11.4);
-  add($("archCap"), "in", 13.2);
-  add($("archCap"), "shine", 13.3);
-  add($("archDate"), "in", 13.9);
-  at(18.0, () => $("sArch").classList.remove("on"));
+  /* 3 · names */
+  add($("nameA"), "in", 5.0);
+  add($("nameA"), "shine", 5.2);
+  add($("amp"), "in", 6.6);
+  add($("nameB"), "in", 7.0);
+  add($("nameB"), "shine", 7.2);
 
-  /* scene C – logo, date, cafe */
-  add($("mandala"), "away", 10.4);
-  add($("sFinal"), "on", 18.7);
-  add($("logoMain"), "in", 18.8);
-  add($("kicker2"), "in", 20.4);
-  add($("date2"), "in", 20.8);
-  add($("miniArch"), "in", 21.2);
+  /* 4 · date */
+  add($("rule1"), "in", 9.4);
+  add($("date1"), "in", 9.9);
+  at(12.2, () => $("sNames").classList.remove("on"));
+  add($("mandala"), "away", 12.2);
 
-  at(25.6, () => {
-    if (REEL) { $("sFinal").classList.remove("on"); at(1.0, play); }
+  /* 5 · painting in the gold arch */
+  add($("sArch"), "on", 12.8);
+  add($("arch"), "in", 12.9);
+
+  /* 6 · finale: painting shrinks up, logo, #HarshgotStutified */
+  add($("arch"), "shrink", 18.0);
+  add($("finale"), "on", 18.6);
+  add($("logoMain"), "in", 18.7);
+  add($("tagGlow"), "in", 20.6);
+  add($("htA"), "in", 20.8);
+  add($("htB"), "in", 21.6);
+  add($("htC"), "in", 22.1);
+  at(22.25, confettiBurst);
+  add($("tagDate"), "in", 23.2);
+
+  at(26.0, () => {
+    if (REEL) { $("sArch").classList.remove("on"); $("finale").classList.remove("on"); at(1.0, play); }
     else $("replayBtn").classList.add("show");
   });
 }
