@@ -816,3 +816,10 @@ body::before {
 }
 .ground--s1 .photo-ground::after { display: none; }
 .ground--s1 { height: 520px; }
+/* temple fitment v2: wider, softer vignette, warm tone matched to the paper */
+.ground--s1 .photo-ground--one img {
+  width: 470px; height: 470px; bottom: 18px;
+  filter: sepia(.12) saturate(.92) brightness(1.03);
+  -webkit-mask-image: radial-gradient(ellipse 58% 60% at 50% 54%, #000 55%, rgba(0,0,0,.6) 72%, transparent 100%);
+          mask-image: radial-gradient(ellipse 58% 60% at 50% 54%, #000 55%, rgba(0,0,0,.6) 72%, transparent 100%);
+}
