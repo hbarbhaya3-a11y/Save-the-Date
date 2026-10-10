@@ -780,3 +780,7 @@ body::before {
 
 .p3-std { font-family: "Cormorant Garamond", serif; font-weight: 600; font-size: 38px; color: #6b1622; margin-bottom: 2px; }
 .p3-logo { transform: scale(.72); margin: -46px 0 -58px; }
+
+.p3-names { margin-top: -.15em; margin-bottom: -.1em; }
+.p3-std { margin-bottom: 0; }
+.p3-date { margin-top: 4px; }
