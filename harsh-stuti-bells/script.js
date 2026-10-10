@@ -143,7 +143,16 @@ function heartRoute() {
   const pts = [];
   const lastEl = cells[last];
   const lp = centerOf(lastEl);
-  pts.push({ x: lp.x, y: lp.y + 70 });            // start: below the last date
+  // start: between the couple in the temple painting, then hop up to the last date
+  const img = document.querySelector(".ground--s1 .photo-ground--one img");
+  if (img) {
+    const s = parseFloat(getComputedStyle(stage).getPropertyValue("--scale")) || 1;
+    const sr = stage.getBoundingClientRect(), r = img.getBoundingClientRect();
+    pts.push({ x: (r.left - sr.left) / s + (r.width / s) * 0.715, y: (r.top - sr.top) / s + (r.height / s) * 0.46 });
+    pts.push({ x: (pts[0].x + lp.x) / 2, y: (pts[0].y + lp.y) / 2 });
+  } else {
+    pts.push({ x: lp.x, y: lp.y + 70 });
+  }
   let row = +lastEl.dataset.row, col = +lastEl.dataset.col;
   pts.push(centerOf(lastEl));
   // climb diagonally (up-left, bouncing off the edge) to the weekday row
@@ -217,7 +226,10 @@ function setPos(n) {
 
 function play() {
   reset();
+  stage.classList.add("no-anim");
   setPos(1);
+  void stage.offsetWidth;
+  requestAnimationFrame(() => stage.classList.remove("no-anim"));
   $("scene1").classList.remove("leaving");
   $("scene3").classList.remove("is-active");
   const music = $("music");
@@ -233,7 +245,7 @@ function play() {
   $("scene2").classList.add("is-active");
   ["p1WedOf", "p1Names"].forEach((id) => $(id).classList.remove("in", "out"));
   $("p1Bg").classList.add("in");
-  at(0.3, () => $("sharedLogo").classList.add("in"));
+  at(0.6, () => $("sharedLogo").classList.add("in"));
   typeInto($("typeSTD"), "Save the Date", 0.1, 2.0);
   at(3.6, () => $("p1WedOf").classList.add("in"));
   at(4.0, () => $("sharedNames").classList.add("in"));
