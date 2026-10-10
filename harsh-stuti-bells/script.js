@@ -210,8 +210,15 @@ function reset() {
   ["monthName", "yearName", "calendar"].forEach((id) => $(id).classList.add("fx"));
 }
 
+function setPos(n) {
+  stage.classList.remove("pos-1", "pos-2", "pos-3");
+  stage.classList.add(`pos-${n}`);
+}
+
 function play() {
   reset();
+  setPos(1);
+  $("scene1").classList.remove("leaving");
   $("scene3").classList.remove("is-active");
   const music = $("music");
   if (!music.paused || music.dataset.ready) { try { music.currentTime = 0; } catch (e) {} }
@@ -226,16 +233,16 @@ function play() {
   $("scene2").classList.add("is-active");
   ["p1WedOf", "p1Names"].forEach((id) => $(id).classList.remove("in", "out"));
   $("p1Bg").classList.add("in");
-  at(0.3, () => { $("monogram").classList.add("in"); $("logoMain").classList.add("in"); });
+  at(0.3, () => $("sharedLogo").classList.add("in"));
   typeInto($("typeSTD"), "Save the Date", 0.1, 2.0);
   at(3.6, () => $("p1WedOf").classList.add("in"));
-  at(4.0, () => $("p1Names").classList.add("in"));
-  at(7.8, () => ["monogram", "typeSTD", "p1WedOf", "p1Names"].forEach((id) => $(id).classList.add("out")));
+  at(4.0, () => $("sharedNames").classList.add("in"));
+  at(7.8, () => ["typeSTD", "p1WedOf"].forEach((id) => $(id).classList.add("out")));
+  at(8.3, () => setPos(2));
   at(8.5, () => { $("scene2").classList.remove("is-active"); $("scene1").classList.add("is-active"); });
 
   /* ---- Scene 1 ---- */
-  at(10.55, () => document.querySelector(".ground--s1").classList.add("in"));
-  at(8.6, () => $("miniLogo").classList.add("in"));
+  at(9.4, () => document.querySelector(".ground--s1").classList.add("in"));
   arcChars.forEach((ch, i) => at(8.6 + i * 0.085, () => ch.classList.add("in")));
   at(11.35, () => monthEl.classList.add("in"));
   at(11.65, () => yearEl.classList.add("in"));
@@ -289,11 +296,11 @@ function play() {
 
   // "FOR THE WEDDING OF" + names
   labelChars.forEach((ch) => ch.classList.add("in"));
-  at(8.7, () => $("coupleNames").classList.add("in"));
 
   // page 3: closing card, everything at once
-  at(24.0, () => $("scene3").classList.add("is-active"));
-  at(25.0, () => $("scene1").classList.remove("is-active"));
+  at(24.0, () => { $("scene1").classList.add("leaving"); setPos(3); });
+  at(24.6, () => $("scene3").classList.add("is-active"));
+  at(25.0, () => { $("scene1").classList.remove("is-active", "leaving"); });
   at(29.0, () => {
     if (CONFIG.loop) play();
     else $("replayBtn").classList.add("show");
