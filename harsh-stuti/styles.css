@@ -719,3 +719,13 @@ body::before {
 .mini-logo { transition: top 1.2s cubic-bezier(.5, .1, .25, 1), transform 1.2s cubic-bezier(.5, .1, .25, 1), opacity 1s ease; }
 .scene--calendar.centered .mini-logo { top: calc(var(--stage-h) / 2 - 230px); transform: scale(.62); }
 .scene--calendar.centered .wedding-of { top: calc(var(--stage-h) / 2 - 30px); }
+
+/* ===== page 2 order: NOVEMBER 2026 → calendar → logo + names → temple (no glide) ===== */
+.scene--calendar.centered .mini-logo, .scene--calendar.centered .wedding-of { top: auto; }
+.mini-logo, .scene--calendar .wedding-of { transition: opacity 1s ease; }
+.scene--calendar .month-block { top: 34px; }
+.scene--calendar .calendar { top: 80px; }
+.scene--calendar .calendar, .scene--calendar .calendar.rows-6 { grid-auto-rows: 30px; }
+.mini-logo { top: 290px; transform: scale(.34); }
+.scene--calendar .wedding-of { top: 378px; }
+.scene--calendar .wedding-of__names { font-size: 56px; transition: clip-path 1.6s cubic-bezier(.3, .2, .6, .9); }
