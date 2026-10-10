@@ -864,3 +864,5 @@ body::before {
 .shared-logo .logo__H, .shared-logo .logo__S { transition-duration: 1.3s, 1.5s, 1.3s; }
 .shared-logo .logo__swirl path { transition-duration: 2.2s; }
 .stage.no-anim .shared-logo, .stage.no-anim .shared-names { transition: none !important; }
+/* crisp temple painting: no haze filter */
+.ground--s1 .photo-ground--one img { filter: none; image-rendering: -webkit-optimize-contrast; }
