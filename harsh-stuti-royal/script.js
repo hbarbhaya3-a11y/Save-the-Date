@@ -114,7 +114,7 @@ function confettiBurst() {
 function play() {
   reset();
   $("confetti").innerHTML = "";
-  ["kicker", "rule1", "date1", "amp"].forEach((id) => $(id).classList.add("fade"));
+  ["kicker", "rule1", "tagline1", "amp"].forEach((id) => $(id).classList.add("fade"));
   $("arch").classList.remove("shrink");
   $("finale").classList.remove("on");
 
@@ -127,6 +127,7 @@ function play() {
   add($("sNames"), "on", 2.6);
   add($("mandala"), "up", 3.0);
   add($("kicker"), "in", 3.6);
+  add($("wedOf"), "in", 4.3);
 
   /* 3 · names */
   add($("nameA"), "in", 5.0);
@@ -137,7 +138,7 @@ function play() {
 
   /* 4 · date */
   add($("rule1"), "in", 9.4);
-  add($("date1"), "in", 9.9);
+  add($("tagline1"), "in", 9.9);
   at(12.2, () => $("sNames").classList.remove("on"));
   add($("mandala"), "away", 12.2);
 

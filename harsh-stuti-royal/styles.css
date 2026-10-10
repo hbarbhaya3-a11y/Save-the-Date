@@ -236,3 +236,13 @@ body {
 .confetti { top: 185px; }
 .s-names { padding-top: 150px; } .s-arch { padding-top: 150px; }
 .arch.shrink { transform: translateY(-40px) scale(.6); } .finale { top: 452px; }
+
+/* gold gradient text paints only inside its box: give tall script capitals room */
+.gold-text { padding-top: .32em; padding-bottom: .22em; margin-top: -.32em; margin-bottom: -.22em; }
+.ht-a, .ht-c { padding-left: 10px; padding-right: 10px; }
+
+/* page 1 */
+.wed-of { font-family: var(--serif); font-style: italic; font-size: 24px; color: var(--maroon); margin-top: 14px; opacity: 0; transform: translateY(8px); transition: opacity 1s ease, transform 1s ease; }
+.wed-of.in { opacity: 1; transform: none; }
+.names { margin-top: 4px; }
+.tagline { font-family: var(--serif); font-style: italic; font-size: 22px; color: var(--ink); margin-top: 14px; }
