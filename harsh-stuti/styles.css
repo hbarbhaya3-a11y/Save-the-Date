@@ -662,3 +662,27 @@ body::before {
 .p1-wedof.in { opacity: 1; transform: none; }
 .p1-names.in { clip-path: inset(-50% -5% -50% -5%); }
 .p1-wedof.out, .p1-names.out, .final-text__std.out { opacity: 0; transition: opacity .6s ease; }
+
+/* ===== page 2: no "Save the Date" arc and no "for the wedding of" ===== */
+.scene--calendar .arc-title, .scene--calendar .wedding-of__label { display: none; }
+.scene--calendar .month-block { margin-top: -112px; }
+.scene--calendar .month { font-size: 30px; letter-spacing: 3px; }
+.scene--calendar .year { font-size: 22px; }
+.scene--calendar .calendar { margin-top: -116px; }
+.scene--calendar .calendar, .scene--calendar .calendar.rows-6 { grid-auto-rows: 34px; }
+.scene--calendar .calendar .cell { font-size: 21px; }
+.scene--calendar .wedding-of { margin-top: -146px; }
+.scene--calendar .wedding-of__names { font-size: 62px; }
+
+/* small logo at the top of page 2 */
+.mini-logo { position: absolute; left: 50%; top: 18px; width: 380px; height: 300px; margin-left: -190px; transform: scale(.4); transform-origin: top center; z-index: 2;
+  opacity: 0; transition: opacity 1s ease; translate: 0 max(0px, var(--shift)); }
+.mini-logo.in { opacity: 1; }
+.mini-logo.out { opacity: 0; transition-duration: .5s; }
+.mini-logo .logo__mark { width: 380px; height: 300px; overflow: visible; }
+.mini-logo .logo__H, .mini-logo .logo__S { opacity: 1; transform: none; filter: none; }
+.mini-logo .logo__swirl path { stroke-dashoffset: 0; }
+.mini-logo .logo__heart { transform: scale(1); }
+.scene--calendar .month-block { margin-top: -30px; }
+.scene--calendar .calendar { margin-top: -50px; }
+.scene--calendar .wedding-of { margin-top: -96px; }

@@ -234,6 +234,7 @@ function play() {
 
   /* ---- Scene 1 ---- */
   at(8.55, () => document.querySelector(".ground--s1").classList.add("in"));
+  at(8.6, () => $("miniLogo").classList.add("in"));
   arcChars.forEach((ch, i) => at(8.6 + i * 0.085, () => ch.classList.add("in")));
   at(9.35, () => monthEl.classList.add("in"));
   at(9.65, () => yearEl.classList.add("in"));
