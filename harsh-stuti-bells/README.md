@@ -2,9 +2,9 @@
 
 Live: https://hbarbhaya3-a11y.github.io/Save-the-Date/harsh-stuti-bells/
 
-This version uses one live background for the whole reel: a rose garland, ivory pillars and brass bells that swing gently. The reel runs about 29 s at 9:16.
+This version uses one live background for the whole reel: a rose garland, ivory pillars and brass bells that swing gently. The reel runs about 29 s at 9:16. The logo and names are shared across pages: they glide and resize to their new spot at each page change.
 
-1. **Page 1:** the H & S logo draws in, "Save the Date" types out, then "for the wedding of" and "Harsh & Stuti" appear.
+1. **Page 1:** the H & S logo animates in, "Save the Date" types out, then "for the wedding of" and "Harsh & Stuti" appear.
 2. **Page 2:** NOVEMBER 2026 and the calendar, with a heart that lands on the 30th. The logo and names sit below it, and the temple painting is framed between the pillars.
 3. **Page 3:** a soft crossfade brings in the closing card: logo, names, "Save the Date" and "30th November 2026", all at once.
 
