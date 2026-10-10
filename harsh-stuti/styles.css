@@ -619,3 +619,11 @@ body::before {
   background: radial-gradient(closest-side, rgba(70, 50, 40, .55), rgba(70, 50, 40, .25) 60%, rgba(70, 50, 40, 0)); }
 .has-couple .art--couple { bottom: calc(18px + env(safe-area-inset-bottom, 0px)); }
 .couple-shadow { background: radial-gradient(closest-side, rgba(70, 50, 40, .7), rgba(70, 50, 40, .3) 60%, rgba(70, 50, 40, 0)); }
+
+/* ===== scene 1: one painted image (couple at the temple), full width, square ===== */
+.ground--s1 .photo-ground::after { display: none; }
+.ground--s1 .photo-ground--one img {
+  width: 540px; height: 540px; left: 0; bottom: 0; transform: none; object-fit: cover;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 12%);
+          mask-image: linear-gradient(to bottom, transparent 0, #000 12%);
+}
