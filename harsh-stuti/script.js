@@ -198,7 +198,6 @@ function reset() {
   heart.getAnimations().forEach((a) => a.cancel());
   heart.style.opacity = 0;
   $("typeSTD").querySelector(".tw").textContent = "";
-  $("typeDate").querySelector(".tw").textContent = "";
   buildArc();
   buildCalendar();
   $("weddingLabel").innerHTML = "";
@@ -221,16 +220,28 @@ function play() {
   const heart = $("heart");
   const labelChars = [...$("weddingLabel").children];
 
+  /* ---- Page 1: logo, Save the Date, for the wedding of Harsh & Stuti ---- */
+  $("scene1").classList.remove("is-active");
+  $("scene2").classList.add("is-active");
+  ["p1Bg", "p1WedOf", "p1Names"].forEach((id) => $(id).classList.remove("in", "out"));
+  at(0.05, () => $("p1Bg").classList.add("in"));
+  at(0.3, () => { $("monogram").classList.add("in"); $("logoMain").classList.add("in"); });
+  typeInto($("typeSTD"), "Save the Date", 0.1, 2.0);
+  at(3.6, () => $("p1WedOf").classList.add("in"));
+  at(4.0, () => $("p1Names").classList.add("in"));
+  at(7.8, () => ["monogram", "typeSTD", "p1WedOf", "p1Names", "p1Bg"].forEach((id) => $(id).classList.add("out")));
+  at(8.5, () => { $("scene2").classList.remove("is-active"); $("scene1").classList.add("is-active"); });
+
   /* ---- Scene 1 ---- */
-  at(0.05, () => document.querySelector(".ground--s1").classList.add("in"));
-  arcChars.forEach((ch, i) => at(0.1 + i * 0.085, () => ch.classList.add("in")));
-  at(0.85, () => monthEl.classList.add("in"));
-  at(1.15, () => yearEl.classList.add("in"));
-  at(1.5, () => cal.classList.add("in"));
+  at(8.55, () => document.querySelector(".ground--s1").classList.add("in"));
+  arcChars.forEach((ch, i) => at(8.6 + i * 0.085, () => ch.classList.add("in")));
+  at(9.35, () => monthEl.classList.add("in"));
+  at(9.65, () => yearEl.classList.add("in"));
+  at(10.0, () => cal.classList.add("in"));
 
   // heart appears below the calendar
   let route;
-  at(3.9, () => {
+  at(12.4, () => {
     route = heartRoute();
     const p0 = route[0];
     heart.animate(
@@ -245,7 +256,7 @@ function play() {
   });
 
   // heart hops across the dates (≈ 6.3s → 12s)
-  at(6.3, () => {
+  at(14.8, () => {
     heart.classList.remove("beat");
     const pts = route;
     const hopDur = Math.min(620, 5600 / (pts.length - 1));
@@ -275,37 +286,11 @@ function play() {
   });
 
   // "FOR THE WEDDING OF" + names
-  labelChars.forEach((ch, i) => at(12.5 + i * 0.06, () => ch.classList.add("in")));
-  at(13.5, () => $("coupleNames").classList.add("in"));
+  labelChars.forEach((ch, i) => at(21.0 + i * 0.06, () => ch.classList.add("in")));
+  at(22.0, () => $("coupleNames").classList.add("in"));
 
-  // scene 1 exit (reverse-ish stagger, like the original)
-  at(17.7, () => arcChars.forEach((ch, i) => setTimeout(() => ch.classList.add("out"), i * 45)));
-  at(17.85, () => { monthEl.classList.add("out"); yearEl.classList.add("out"); });
-  at(18.1, () => { cal.classList.add("out"); heart.classList.add("out"); });
-  at(18.1, () => { $("weddingLabel").classList.add("out"); $("coupleNames").classList.add("out"); });
-  at(18.0, () => document.querySelector(".ground--s1").classList.add("out"));
-
-  /* ---- Scene 2 ---- */
-  at(18.8, () => {
-    $("scene1").classList.remove("is-active");
-    $("scene2").classList.add("is-active");
-    heart.classList.remove("out");
-    heart.getAnimations().forEach((a) => a.cancel());
-    heart.style.opacity = 0;
-  });
-  at(18.85, () => { $("monogram").classList.add("in"); $("logoMain").classList.add("in"); document.querySelector(".ground--s2").classList.add("in"); });
-  typeInto($("typeSTD"), "Save the Date", 0.11, 19.5);
-  const dateStr = `${CONFIG.day} . ${MONTHS[CONFIG.month - 1].slice(0, 3)} . ${CONFIG.year}`;
-  typeInto($("typeDate"), dateStr, 0.1, 21.05);
-
-  // ending
-  at(25.4, () => {
-    $("monogram").classList.add("out");
-    document.querySelector(".ground--s2").classList.add("out");
-    $("typeSTD").classList.add("out");
-    $("typeDate").classList.add("out");
-  });
-  at(26.2, () => {
+  // ending: hold on the calendar page
+  at(26.7, () => {
     if (CONFIG.loop) play();
     else $("replayBtn").classList.add("show");
   });
