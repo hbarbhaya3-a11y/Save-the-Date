@@ -708,3 +708,14 @@ body::before {
 .scene--calendar .month, .scene--calendar .year { font-size: 28px; letter-spacing: 3px; margin: 0; transform: none; }
 .scene--calendar .calendar { top: 258px; margin-top: 0; }
 .scene--calendar .calendar, .scene--calendar .calendar.rows-6 { grid-auto-rows: 31px; }
+
+/* page 2 opens with logo + names in the middle of the page, then they glide up */
+.mini-logo, .scene--calendar .wedding-of { transition: top 1.2s cubic-bezier(.5, .1, .25, 1), opacity 1s ease; }
+.scene--calendar .wedding-of__names { transition: clip-path 1.6s cubic-bezier(.3, .2, .6, .9), font-size 1.2s cubic-bezier(.5, .1, .25, 1); }
+.scene--calendar.centered .mini-logo { top: calc(var(--stage-h) / 2 - 150px); }
+.scene--calendar.centered .wedding-of { top: calc(var(--stage-h) / 2 - 40px); }
+.scene--calendar.centered .wedding-of__names { font-size: 70px; }
+.scene--calendar.centered .mini-logo, .scene--calendar.centered .wedding-of { translate: 0 0; }
+.mini-logo { transition: top 1.2s cubic-bezier(.5, .1, .25, 1), transform 1.2s cubic-bezier(.5, .1, .25, 1), opacity 1s ease; }
+.scene--calendar.centered .mini-logo { top: calc(var(--stage-h) / 2 - 230px); transform: scale(.62); }
+.scene--calendar.centered .wedding-of { top: calc(var(--stage-h) / 2 - 30px); }

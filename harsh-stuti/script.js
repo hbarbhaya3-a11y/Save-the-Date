@@ -212,6 +212,7 @@ function reset() {
 
 function play() {
   reset();
+  $("scene1").classList.add("centered");
   const music = $("music");
   if (!music.paused || music.dataset.ready) { try { music.currentTime = 0; } catch (e) {} }
 
@@ -233,16 +234,17 @@ function play() {
   at(8.5, () => { $("scene2").classList.remove("is-active"); $("scene1").classList.add("is-active"); });
 
   /* ---- Scene 1 ---- */
-  at(8.55, () => document.querySelector(".ground--s1").classList.add("in"));
+  at(10.55, () => document.querySelector(".ground--s1").classList.add("in"));
   at(8.6, () => $("miniLogo").classList.add("in"));
+  at(10.3, () => $("scene1").classList.remove("centered"));
   arcChars.forEach((ch, i) => at(8.6 + i * 0.085, () => ch.classList.add("in")));
-  at(9.35, () => monthEl.classList.add("in"));
-  at(9.65, () => yearEl.classList.add("in"));
-  at(10.0, () => cal.classList.add("in"));
+  at(11.35, () => monthEl.classList.add("in"));
+  at(11.65, () => yearEl.classList.add("in"));
+  at(12.0, () => cal.classList.add("in"));
 
   // heart appears below the calendar
   let route;
-  at(12.4, () => {
+  at(14.4, () => {
     route = heartRoute();
     const p0 = route[0];
     heart.animate(
@@ -257,7 +259,7 @@ function play() {
   });
 
   // heart hops across the dates (≈ 6.3s → 12s)
-  at(14.8, () => {
+  at(16.8, () => {
     heart.classList.remove("beat");
     const pts = route;
     const hopDur = Math.min(620, 5600 / (pts.length - 1));
@@ -287,11 +289,11 @@ function play() {
   });
 
   // "FOR THE WEDDING OF" + names
-  labelChars.forEach((ch, i) => at(21.0 + i * 0.06, () => ch.classList.add("in")));
+  labelChars.forEach((ch, i) => at(23.0 + i * 0.06, () => ch.classList.add("in")));
   at(8.7, () => $("coupleNames").classList.add("in"));
 
   // ending: hold on the calendar page
-  at(24.2, () => {
+  at(26.2, () => {
     if (CONFIG.loop) play();
     else $("replayBtn").classList.add("show");
   });
