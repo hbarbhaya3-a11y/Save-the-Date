@@ -686,3 +686,15 @@ body::before {
 .scene--calendar .month-block { margin-top: -30px; }
 .scene--calendar .calendar { margin-top: -50px; }
 .scene--calendar .wedding-of { margin-top: -96px; }
+
+/* page 1 artwork: background + swinging bells, kept aligned at any screen height */
+.p1-bg { left: 50%; right: auto; top: 0; bottom: auto; width: auto; height: 100%; aspect-ratio: 941 / 1672; transform: translateX(-50%); }
+.p1-bg__paper { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.bell { position: absolute; height: auto; transform-origin: 50% 0; animation: swing 3.2s ease-in-out infinite alternate; }
+.bell1 { animation-duration: 3.4s; animation-delay: -.6s; }
+.bell2 { animation-duration: 2.9s; animation-delay: -1.4s; }
+.bell3 { animation-duration: 3.1s; animation-delay: -.2s; }
+.bell4 { animation-duration: 2.8s; animation-delay: -1.9s; }
+.bell5 { animation-duration: 3.5s; animation-delay: -1.1s; }
+@keyframes swing { from { transform: rotate(-4deg); } to { transform: rotate(4deg); } }
+@media (prefers-reduced-motion: reduce) { .bell { animation: none; } }
