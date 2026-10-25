@@ -220,7 +220,7 @@ function reset() {
 }
 
 function setPos(n) {
-  stage.classList.remove("pos-1", "pos-2", "pos-3");
+  stage.classList.remove("pos-1", "pos-2", "pos-3", "pos-4");
   stage.classList.add(`pos-${n}`);
 }
 
@@ -232,6 +232,8 @@ function play() {
   requestAnimationFrame(() => stage.classList.remove("no-anim"));
   $("scene1").classList.remove("leaving");
   $("scene3").classList.remove("is-active");
+  $("sceneEv").classList.remove("is-active", "leaving");
+  ["evTitle", "ev1", "ev2", "ev3"].forEach((id) => $(id).classList.remove("in"));
   const music = $("music");
   if (!music.paused || music.dataset.ready) { try { music.currentTime = 0; } catch (e) {} }
 
@@ -310,10 +312,16 @@ function play() {
   labelChars.forEach((ch) => ch.classList.add("in"));
 
   // page 3: closing card, everything at once
-  at(24.0, () => { $("scene1").classList.add("leaving"); setPos(3); });
-  at(24.6, () => $("scene3").classList.add("is-active"));
+  // events page
+  at(24.0, () => { $("scene1").classList.add("leaving"); setPos(4); });
+  at(24.6, () => $("sceneEv").classList.add("is-active"));
   at(25.0, () => { $("scene1").classList.remove("is-active", "leaving"); });
-  at(29.0, () => {
+  ["evTitle", "ev1", "ev2", "ev3"].forEach((id, i) => at(25.0 + i * 0.7, () => $(id).classList.add("in")));
+  // closing card
+  at(32.0, () => { $("sceneEv").classList.add("leaving"); setPos(3); });
+  at(32.6, () => $("scene3").classList.add("is-active"));
+  at(33.0, () => { $("sceneEv").classList.remove("is-active", "leaving"); });
+  at(37.0, () => {
     if (CONFIG.loop) play();
     else $("replayBtn").classList.add("show");
   });

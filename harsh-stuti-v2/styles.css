@@ -873,3 +873,37 @@ body::before {
           mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, #000 70%, transparent 100%);
 }
 .ground--s1 .photo-ground--one img { width: 436px; height: 436px; bottom: 44px; }
+
+/* =========== EVENTS PAGE =========== */
+.stage.pos-4 { --ly: 238px; --ls: .4; --ny: 352px; --nf: 54px; }
+.scene--events { z-index: 2; opacity: 0; transition: opacity .7s ease; }
+.scene--events.is-active { opacity: 1; }
+.scene--events.leaving { opacity: 0; }
+.ev-title {
+  position: absolute; left: 0; right: 0; top: 432px; text-align: center;
+  font-family: "Cormorant Garamond", serif; font-weight: 600; font-size: 22px; letter-spacing: 6px; text-transform: uppercase; color: #8a5d1f;
+  opacity: 0; transform: translateY(8px); transition: opacity .8s ease, transform .8s ease;
+}
+.ev-list { position: absolute; left: 92px; right: 92px; top: 490px; display: flex; flex-direction: column; gap: 22px; }
+.ev {
+  display: flex; align-items: center; gap: 20px; padding: 16px 20px;
+  background: rgba(255, 250, 241, .82); border: 1px solid rgba(176, 138, 78, .55); border-radius: 14px;
+  box-shadow: 0 6px 16px rgba(120, 70, 30, .08);
+  opacity: 0; transform: translateY(14px); transition: opacity .8s ease, transform .8s cubic-bezier(.2, .8, .2, 1);
+}
+.ev-title.in, .ev.in { opacity: 1; transform: none; }
+.ev-ico { flex: none; width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center; border: 1.6px solid #b08a4e; color: #8a5d1f; background: #fffaf0; }
+.ev-ico svg { width: 38px; height: 38px; }
+#ev1 .ev-ico { color: #c98a12; border-color: #d9a640; }
+#ev2 .ev-ico { color: #6b1622; }
+#ev3 .ev-ico { color: #b5354e; border-color: #d48b98; }
+.ev-body { min-width: 0; }
+.ev-name { font-family: "Great Vibes", cursive; font-size: 46px; line-height: 1.05; color: #6b1622; padding-top: .1em; }
+.ev-when { font-family: "Cormorant Garamond", serif; font-weight: 600; font-size: 19px; color: #5a3a2c; font-variant-numeric: lining-nums; }
+.ev-when sup { font-size: .6em; }
+.ev-time { font-family: "Cormorant Garamond", serif; font-weight: 600; font-size: 19px; letter-spacing: 2px; color: #8a5d1f; font-variant-numeric: lining-nums; }
+.stage.pos-4 { --ly: 214px; --ls: .36; --ny: 318px; --nf: 50px; }
+.ev-title { top: 388px; }
+.ev-list { top: 434px; gap: 16px; }
+.ev { padding: 12px 18px; }
+.ev-name { font-size: 42px; }
