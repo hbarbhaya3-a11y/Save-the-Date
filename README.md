@@ -1,6 +1,6 @@
 # Save the Date: Abhishek & Deepa
 
-Also in this repo: [Harsh & Stuti](harsh-stuti/) and [Harsh & Stuti, bells](harsh-stuti-bells/).
+Also in this repo: [Harsh & Stuti](harsh-stuti/), [Harsh & Stuti, bells](harsh-stuti-bells/) and [Harsh & Stuti, v2](harsh-stuti-v2/).
 
 An animated, mobile-first (9:16) wedding "Save the Date" invitation. It is built with plain HTML, CSS, JavaScript and hand-drawn SVG. There are no build steps and no dependencies.
 
