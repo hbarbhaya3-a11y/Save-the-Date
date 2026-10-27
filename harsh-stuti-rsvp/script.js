@@ -1,10 +1,11 @@
 /* ---------------- settings: edit these ---------------- */
 const CONFIG = {
-  // WhatsApp number that receives RSVPs, country code first, digits only (e.g. "919812345678").
-  // Left empty, the WhatsApp button lets the guest pick who to send it to.
-  whatsappNumber: "",
-  // Optional: Google Apps Script web-app URL that saves each RSVP to a Google Sheet (see README).
+  // Google Apps Script web-app URL that saves each RSVP as a row in your Google Sheet
+  // (same set-up as the engagement RSVP; see README).
   sheetUrl: "",
+  // Optional WhatsApp number, country code first, digits only (e.g. "919812345678").
+  // When set, guests also get a "send on WhatsApp" button. With no sheet, the button is always shown.
+  whatsappNumber: "",
   rsvpBy: "10th November 2026",
 };
 
@@ -125,8 +126,9 @@ form.addEventListener("submit", async (e) => {
   d.submittedAt = new Date().toISOString();
   if (CONFIG.sheetUrl) {
     try {
-      await fetch(CONFIG.sheetUrl, { method: "POST", mode: "no-cors", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(d) });
-    } catch (err) { /* WhatsApp below is the fallback */ }
+      const payload = new URLSearchParams(Object.entries(d).map(([k, v]) => [k, String(v)]));
+      await fetch(CONFIG.sheetUrl, { method: "POST", mode: "no-cors", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: payload.toString() });
+    } catch (err) {}
   }
   try { localStorage.setItem(STORE, JSON.stringify(saveState())); } catch (err) {}
   btn.disabled = false; btn.textContent = "Send RSVP";
@@ -135,10 +137,11 @@ form.addEventListener("submit", async (e) => {
 
 function showThanks(d) {
   const yes = d.attending === "Yes";
-  $("thanksTitle").textContent = yes ? "Thank you!" : "Thank you";
+  const first = d.name.split(" ")[0], n = d.adults + (d.children || 0);
+  $("thanksTitle").textContent = yes ? `Thank you, ${first}!` : `We'll miss you, ${first}`;
   $("thanksMsg").textContent = yes
-    ? `We can't wait to celebrate with you, ${d.name.split(" ")[0]}!`
-    : "We'll miss you, and we're grateful for your blessings.";
+    ? `We've saved a spot for ${n} ${n === 1 ? "guest" : "guests"}. Can't wait to celebrate with you.`
+    : "Thank you for letting us know. Your blessings will be with us on the day.";
   $("summary").innerHTML = "";
   rows(d).forEach(([k, l]) => {
     const r = document.createElement("div"), dt = document.createElement("dt"), dd = document.createElement("dd");
@@ -146,6 +149,7 @@ function showThanks(d) {
   });
   $("waBtn").href = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(waText(d))}`;
   $("waBtn").textContent = CONFIG.sheetUrl ? "Also send on WhatsApp" : "Send my RSVP on WhatsApp";
+  $("waBtn").hidden = !!CONFIG.sheetUrl && !CONFIG.whatsappNumber;
   $("calBtn").hidden = !yes;
   form.hidden = true;
   $("thanks").hidden = false;
