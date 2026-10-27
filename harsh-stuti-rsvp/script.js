@@ -78,7 +78,7 @@ function collect() {
     }
     if (f.travel.value === "Arrange from Delhi") {
       Object.assign(d, {
-        arriveMode: f.arriveMode.value, pickup: f.pickup.value,
+        arriveMode: f.arriveMode.value,
         arrive: [f.arriveDate.value, f.arriveTime.value].filter(Boolean).join(", "),
         depart: [f.returnDate.value, f.returnTime.value].filter(Boolean).join(", "),
         travelRef: f.travelRef.value.trim(),
@@ -118,7 +118,7 @@ const LABELS = [
   ["name", "Name"], ["phone", "Phone"], ["email", "Email"], ["city", "Coming from"],
   ["attending", "Attending"], ["guests", "Guests"], ["events", "Celebrations"],
   ["travel", "Travel"], ["ownArrive", "Arriving at venue"], ["ownDepart", "Leaving venue"], ["parking", "Parking"],
-  ["arriveMode", "Arriving by"], ["pickup", "Pickup"], ["arrive", "Arrival in Delhi"],
+  ["arriveMode", "Arriving by"], ["arrive", "Arrival in Delhi"],
   ["depart", "Return from Delhi"], ["travelRef", "Flight / train"],
   ["perform", "Performing"], ["performWhat", "Performance"], ["song", "Song request"],
   ["wish", "Wish"],
