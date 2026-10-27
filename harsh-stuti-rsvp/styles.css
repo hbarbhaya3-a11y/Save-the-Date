@@ -182,3 +182,10 @@ fieldset > :not(legend) { clear: both; }
 .stepper--inline .stepper__ctl { width: 150px; }
 #ownPart .chips { margin-bottom: 14px; }
 input[type=email] { width: 100%; min-height: 48px; font: 500 17px var(--serif); color: var(--ink); background: #fff; border: 1px solid rgba(176, 138, 78, .55); border-radius: 12px; padding: 10px 14px; appearance: none; -webkit-appearance: none; }
+
+/* gold lotus divider */
+.rule { gap: 8px; margin: 14px auto 12px; }
+.rule span { width: 64px; height: 1px; background: linear-gradient(90deg, rgba(176, 138, 78, 0), var(--gold-soft)); }
+.rule span:last-child { background: linear-gradient(90deg, var(--gold-soft), rgba(176, 138, 78, 0)); }
+.rule .dia { width: 5px; height: 5px; background: var(--gold-soft); transform: rotate(45deg); flex: none; }
+.rule .lotus { width: 54px; height: auto; flex: none; overflow: visible; }
