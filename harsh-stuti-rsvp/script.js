@@ -20,9 +20,16 @@ $("rsvpBy").textContent = CONFIG.rsvpBy;
 function sync() {
   const att = F.attending.value;
   $("yesPart").hidden = att !== "yes";
-  $("wishNum").textContent = att === "yes" ? "8" : "3";
+  $("ownPart").hidden = F.travel.value !== "On my own";
   $("delhiPart").hidden = F.travel.value !== "Arrange from Delhi";
   $("stayPart").hidden = F.stay.value !== "Yes";
+  $("sangeetPart").hidden = !values("events").includes("Sangeet");
+  $("performPart").hidden = !["Yes", "Maybe"].includes(F.perform.value);
+  // number the visible sections in order
+  let n = 0;
+  form.querySelectorAll("fieldset").forEach((fs) => {
+    if (!fs.closest("[hidden]")) fs.querySelector(".num").textContent = ++n;
+  });
 }
 form.addEventListener("change", (e) => {
   if (e.target.name) clearBad(e.target);
@@ -31,7 +38,7 @@ form.addEventListener("change", (e) => {
 form.addEventListener("input", (e) => clearBad(e.target));
 
 /* ---------------- guest steppers ---------------- */
-const limits = { adults: [1, 12], children: [0, 12] };
+const limits = { adults: [1, 12], children: [0, 12], rooms: [1, 6] };
 document.querySelectorAll("[data-step]").forEach((b) => b.addEventListener("click", () => {
   const key = b.dataset.step, [min, max] = limits[key];
   const v = Math.min(max, Math.max(min, +form[key].value + +b.dataset.d));
@@ -47,6 +54,8 @@ function collect() {
   const d = {
     name: f.name.value.trim(),
     phone: f.phone.value.trim(),
+    email: f.email.value.trim(),
+    city: f.city.value.trim(),
     side: f.side.value,
     attending: yes ? "Yes" : f.attending.value === "no" ? "No" : "",
     wish: f.wish.value.trim(),
@@ -56,13 +65,28 @@ function collect() {
       adults: +f.adults.value,
       children: +f.children.value,
       guestNames: f.guestNames.value.trim(),
+      assist: f.assist.checked ? "Yes" : "",
       events: values("events").join(", "),
       travel: f.travel.value,
       food: f.food.value,
       notes: f.notes.value.trim(),
       stay: f.stay.value,
       nights: f.stay.value === "Yes" ? values("nights").join(", ") : "",
+      rooms: f.stay.value === "Yes" ? +f.rooms.value : "",
     });
+    if (f.travel.value === "On my own") {
+      Object.assign(d, {
+        ownArrive: [f.ownArriveDate.value, f.ownArriveTime.value].filter(Boolean).join(", "),
+        parking: f.parking.checked ? "Yes" : "",
+      });
+    }
+    if (values("events").includes("Sangeet")) {
+      Object.assign(d, {
+        perform: f.perform.value,
+        performWhat: ["Yes", "Maybe"].includes(f.perform.value) ? f.performWhat.value.trim() : "",
+        song: f.song.value.trim(),
+      });
+    }
     if (f.travel.value === "Arrange from Delhi") {
       Object.assign(d, {
         arriveMode: f.arriveMode.value, pickup: f.pickup.value,
@@ -102,11 +126,14 @@ function validate(d) {
 
 /* ---------------- labels for the summary and WhatsApp ---------------- */
 const LABELS = [
-  ["name", "Name"], ["phone", "Phone"], ["side", "Joining as"], ["attending", "Attending"],
-  ["adults", "Adults"], ["children", "Children"], ["guestNames", "Guests"], ["events", "Celebrations"],
-  ["travel", "Travel"], ["arriveMode", "Arriving by"], ["pickup", "Pickup"], ["arrive", "Arrival"],
-  ["depart", "Return"], ["travelRef", "Flight / train"], ["stay", "Room needed"], ["nights", "Nights"],
-  ["food", "Food"], ["notes", "Notes"], ["wish", "Wish"],
+  ["name", "Name"], ["phone", "Phone"], ["email", "Email"], ["city", "Coming from"], ["side", "Joining as"],
+  ["attending", "Attending"], ["adults", "Adults"], ["children", "Children"], ["guestNames", "Guests"],
+  ["assist", "Extra care needed"], ["events", "Celebrations"],
+  ["travel", "Travel"], ["ownArrive", "Reaching venue"], ["parking", "Parking"],
+  ["arriveMode", "Arriving by"], ["pickup", "Pickup"], ["arrive", "Arrival"],
+  ["depart", "Return"], ["travelRef", "Flight / train"], ["stay", "Room needed"], ["rooms", "Rooms"], ["nights", "Nights"],
+  ["food", "Food"], ["notes", "Notes"], ["perform", "Performing"], ["performWhat", "Performance"], ["song", "Song request"],
+  ["wish", "Wish"],
 ];
 const rows = (d) => LABELS.filter(([k]) => d[k] !== undefined && d[k] !== "" && !(k === "children" && !d[k]));
 
@@ -185,6 +212,7 @@ function loadState() {
   });
   $("adultsOut").textContent = F.adults.value;
   $("childrenOut").textContent = F.children.value;
+  $("roomsOut").textContent = F.rooms.value;
 }
 loadState();
 sync();

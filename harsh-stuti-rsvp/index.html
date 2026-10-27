@@ -70,6 +70,16 @@
           <span>Phone (WhatsApp)</span>
           <input name="phone" type="tel" autocomplete="tel" inputmode="tel" required placeholder="+91 98xxx xxxxx" />
         </label>
+        <div class="grid2">
+          <label class="field">
+            <span>Email <small>(optional)</small></span>
+            <input name="email" type="email" autocomplete="email" inputmode="email" placeholder="you@example.com" />
+          </label>
+          <label class="field">
+            <span>City you're coming from</span>
+            <input name="city" type="text" autocomplete="address-level2" placeholder="e.g. Ahmedabad" />
+          </label>
+        </div>
         <div class="field">
           <span id="sideL">You are joining us as</span>
           <div class="chips" role="radiogroup" aria-labelledby="sideL">
@@ -118,6 +128,9 @@
             <span>Names of everyone coming <small>(optional)</small></span>
             <textarea name="guestNames" rows="2" placeholder="e.g. Rahul Shah, Priya Shah, Aarav (8)"></textarea>
           </label>
+          <div class="checks checks--small">
+            <label><input type="checkbox" name="assist" value="Yes" /><span><b>Someone needs a little extra care</b><small>Elderly guests, wheelchair access, ground-floor room</small></span></label>
+          </div>
         </fieldset>
 
         <!-- 4 · celebrations -->
@@ -140,6 +153,26 @@
               <label><input type="radio" name="travel" value="Arrange from Delhi" /><span>Please arrange my travel from Delhi</span></label>
               <label><input type="radio" name="travel" value="On my own" /><span>I'll reach on my own</span></label>
               <label><input type="radio" name="travel" value="Not sure yet" /><span>Not sure yet</span></label>
+            </div>
+          </div>
+          <div id="ownPart" hidden>
+            <div class="grid2">
+              <label class="field">
+                <span>Reaching the venue on</span>
+                <select name="ownArriveDate">
+                  <option value="">Choose</option>
+                  <option>Sat, 28th Nov</option>
+                  <option>Sun, 29th Nov</option>
+                  <option>Mon, 30th Nov</option>
+                </select>
+              </label>
+              <label class="field">
+                <span>Around what time</span>
+                <input name="ownArriveTime" type="time" />
+              </label>
+            </div>
+            <div class="chips">
+              <label><input type="checkbox" name="parking" value="Yes" /><span>I'll need parking for a car</span></label>
             </div>
           </div>
           <div id="delhiPart" hidden>
@@ -212,6 +245,15 @@
             </div>
           </div>
           <div id="stayPart" hidden>
+            <div class="stepper stepper--inline">
+              <span id="rmL">Rooms needed</span>
+              <div class="stepper__ctl" aria-labelledby="rmL">
+                <button type="button" data-step="rooms" data-d="-1" aria-label="Fewer rooms">−</button>
+                <output id="roomsOut">1</output>
+                <button type="button" data-step="rooms" data-d="1" aria-label="More rooms">+</button>
+              </div>
+            </div>
+            <input type="hidden" name="rooms" value="1" />
             <div class="field">
               <span>Nights</span>
               <div class="chips">
@@ -236,11 +278,32 @@
             <input name="notes" type="text" placeholder="e.g. nut allergy, wheelchair access" />
           </label>
         </fieldset>
+
+        <!-- sangeet -->
+        <fieldset id="sangeetPart">
+          <legend><span class="num">8</span> Sangeet night</legend>
+          <div class="field">
+            <span id="pfL">Would you like to perform?</span>
+            <div class="chips" role="radiogroup" aria-labelledby="pfL">
+              <label><input type="radio" name="perform" value="Yes" /><span>Yes, count me in!</span></label>
+              <label><input type="radio" name="perform" value="Maybe" /><span>Maybe</span></label>
+              <label><input type="radio" name="perform" value="No" /><span>I'll cheer</span></label>
+            </div>
+          </div>
+          <label class="field" id="performPart" hidden>
+            <span>What would you like to perform?</span>
+            <input name="performWhat" type="text" placeholder="e.g. group dance with the Shah family" />
+          </label>
+          <label class="field">
+            <span>A song that will get you on the dance floor <small>(optional)</small></span>
+            <input name="song" type="text" placeholder="e.g. London Thumakda" />
+          </label>
+        </fieldset>
       </div>
 
       <!-- wishes -->
       <fieldset>
-        <legend><span class="num" id="wishNum">3</span> A wish for the couple <small>(optional)</small></legend>
+        <legend><span class="num">3</span> A wish for the couple <small>(optional)</small></legend>
         <label class="field">
           <span class="sr">Your wish</span>
           <textarea name="wish" rows="3" placeholder="Write a few words for Harsh &amp; Stuti…"></textarea>

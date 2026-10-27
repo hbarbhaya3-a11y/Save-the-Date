@@ -173,3 +173,12 @@ fieldset > :not(legend) { clear: both; }
 .choice span, .checks span, .chips--stack span { border-radius: 4px; }
 .thanks .mark { width: 52px; height: 52px; margin: 6px auto 8px; border: 1px solid var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--gold); }
 .thanks__script { font-size: 44px; }
+
+/* extra-care check and inline room stepper */
+.checks--small { margin-bottom: 4px; }
+.checks--small b { font: 600 17px var(--serif); color: var(--ink); }
+.stepper--inline { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+.stepper--inline > span { margin: 0; }
+.stepper--inline .stepper__ctl { width: 150px; }
+#ownPart .chips { margin-bottom: 14px; }
+input[type=email] { width: 100%; min-height: 48px; font: 500 17px var(--serif); color: var(--ink); background: #fff; border: 1px solid rgba(176, 138, 78, .55); border-radius: 12px; padding: 10px 14px; appearance: none; -webkit-appearance: none; }
