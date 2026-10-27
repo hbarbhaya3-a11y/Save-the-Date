@@ -6,7 +6,6 @@ const CONFIG = {
   // Optional WhatsApp number, country code first, digits only (e.g. "919812345678").
   // When set, guests also get a "send on WhatsApp" button. With no sheet, the button is always shown.
   whatsappNumber: "",
-  rsvpBy: "10th November 2026",
 };
 
 const $ = (id) => document.getElementById(id);
@@ -14,15 +13,13 @@ const form = $("rsvp");
 const F = form.elements;
 const STORE = "hs-wedding-rsvp";
 
-$("rsvpBy").textContent = CONFIG.rsvpBy;
-
 /* ---------------- show / hide sections ---------------- */
 function sync() {
   const att = F.attending.value;
   $("yesPart").hidden = att !== "yes";
-  $("ownPart").hidden = F.travel.value !== "On my own";
+  $("ownPart").hidden = !["On my own", "Not sure yet"].includes(F.travel.value);
+  $("parkingPart").hidden = F.travel.value !== "On my own";
   $("delhiPart").hidden = F.travel.value !== "Arrange from Delhi";
-  $("stayPart").hidden = F.stay.value !== "Yes";
   $("sangeetPart").hidden = !values("events").includes("Sangeet");
   $("performPart").hidden = !["Yes", "Maybe"].includes(F.perform.value);
   // number the visible sections in order
@@ -38,7 +35,7 @@ form.addEventListener("change", (e) => {
 form.addEventListener("input", (e) => clearBad(e.target));
 
 /* ---------------- guest steppers ---------------- */
-const limits = { adults: [1, 12], children: [0, 12], rooms: [1, 6] };
+const limits = { guests: [1, 20] };
 document.querySelectorAll("[data-step]").forEach((b) => b.addEventListener("click", () => {
   const key = b.dataset.step, [min, max] = limits[key];
   const v = Math.min(max, Math.max(min, +form[key].value + +b.dataset.d));
@@ -56,28 +53,20 @@ function collect() {
     phone: f.phone.value.trim(),
     email: f.email.value.trim(),
     city: f.city.value.trim(),
-    side: f.side.value,
     attending: yes ? "Yes" : f.attending.value === "no" ? "No" : "",
     wish: f.wish.value.trim(),
   };
   if (yes) {
     Object.assign(d, {
-      adults: +f.adults.value,
-      children: +f.children.value,
-      guestNames: f.guestNames.value.trim(),
-      assist: f.assist.checked ? "Yes" : "",
+      guests: +f.guests.value,
       events: values("events").join(", "),
       travel: f.travel.value,
-      food: f.food.value,
-      notes: f.notes.value.trim(),
-      stay: f.stay.value,
-      nights: f.stay.value === "Yes" ? values("nights").join(", ") : "",
-      rooms: f.stay.value === "Yes" ? +f.rooms.value : "",
     });
-    if (f.travel.value === "On my own") {
+    if (["On my own", "Not sure yet"].includes(f.travel.value)) {
       Object.assign(d, {
         ownArrive: [f.ownArriveDate.value, f.ownArriveTime.value].filter(Boolean).join(", "),
-        parking: f.parking.checked ? "Yes" : "",
+        ownDepart: [f.ownDepartDate.value, f.ownDepartTime.value].filter(Boolean).join(", "),
+        parking: f.travel.value === "On my own" && f.parking.checked ? "Yes" : "",
       });
     }
     if (values("events").includes("Sangeet")) {
@@ -126,16 +115,15 @@ function validate(d) {
 
 /* ---------------- labels for the summary and WhatsApp ---------------- */
 const LABELS = [
-  ["name", "Name"], ["phone", "Phone"], ["email", "Email"], ["city", "Coming from"], ["side", "Joining as"],
-  ["attending", "Attending"], ["adults", "Adults"], ["children", "Children"], ["guestNames", "Guests"],
-  ["assist", "Extra care needed"], ["events", "Celebrations"],
-  ["travel", "Travel"], ["ownArrive", "Reaching venue"], ["parking", "Parking"],
-  ["arriveMode", "Arriving by"], ["pickup", "Pickup"], ["arrive", "Arrival"],
-  ["depart", "Return"], ["travelRef", "Flight / train"], ["stay", "Room needed"], ["rooms", "Rooms"], ["nights", "Nights"],
-  ["food", "Food"], ["notes", "Notes"], ["perform", "Performing"], ["performWhat", "Performance"], ["song", "Song request"],
+  ["name", "Name"], ["phone", "Phone"], ["email", "Email"], ["city", "Coming from"],
+  ["attending", "Attending"], ["guests", "Guests"], ["events", "Celebrations"],
+  ["travel", "Travel"], ["ownArrive", "Arriving at venue"], ["ownDepart", "Leaving venue"], ["parking", "Parking"],
+  ["arriveMode", "Arriving by"], ["pickup", "Pickup"], ["arrive", "Arrival in Delhi"],
+  ["depart", "Return from Delhi"], ["travelRef", "Flight / train"],
+  ["perform", "Performing"], ["performWhat", "Performance"], ["song", "Song request"],
   ["wish", "Wish"],
 ];
-const rows = (d) => LABELS.filter(([k]) => d[k] !== undefined && d[k] !== "" && !(k === "children" && !d[k]));
+const rows = (d) => LABELS.filter(([k]) => d[k] !== undefined && d[k] !== "");
 
 function waText(d) {
   const lines = ["*RSVP · Harsh & Stuti's wedding* 💍", ""];
@@ -164,7 +152,7 @@ form.addEventListener("submit", async (e) => {
 
 function showThanks(d) {
   const yes = d.attending === "Yes";
-  const first = d.name.split(" ")[0], n = d.adults + (d.children || 0);
+  const first = d.name.split(" ")[0], n = d.guests;
   $("thanksTitle").textContent = yes ? `Thank you, ${first}!` : `We'll miss you, ${first}`;
   $("thanksMsg").textContent = yes
     ? `We've saved a spot for ${n} ${n === 1 ? "guest" : "guests"}. Can't wait to celebrate with you.`
@@ -210,9 +198,7 @@ function loadState() {
     else if (el.type === "checkbox") el.checked = s[el.name].includes(el.value);
     else el.value = s[el.name];
   });
-  $("adultsOut").textContent = F.adults.value;
-  $("childrenOut").textContent = F.children.value;
-  $("roomsOut").textContent = F.rooms.value;
+  $("guestsOut").textContent = F.guests.value;
 }
 loadState();
 sync();

@@ -45,7 +45,6 @@
         <text class="logo__S" x="262" y="232" text-anchor="middle" fill="url(#goldA)">S</text>
         <g transform="translate(16 8)"><path d="M206 150c-9-7-15-12-15-19 0-4 3-8 8-8 3 0 6 2 7 5 1-3 4-5 7-5 5 0 8 4 8 8 0 7-6 12-15 19z" fill="none" stroke="url(#goldA)" stroke-width="1.8" stroke-linejoin="round"/></g>
       </svg>
-      <p class="kicker">Together with joy</p>
       <h1 class="names">Harsh <span class="amp">&amp;</span> Stuti</h1>
       <p class="dates">29<sup>th</sup> &amp; 30<sup>th</sup> November 2026</p>
       <p class="venue"><a href="https://maps.google.com/?q=Moolchand+Resort+Muzaffarnagar" target="_blank" rel="noopener">Moolchand Resort, Muzaffarnagar</a></p>
@@ -55,7 +54,7 @@
         <li><span class="ev-name">Sangeet</span><span class="ev-when">Sunday, 29<sup>th</sup> Nov · 7:00 PM</span></li>
         <li><span class="ev-name">Varmala</span><span class="ev-when">Monday, 30<sup>th</sup> Nov · 11:00 AM</span></li>
       </ul>
-      <p class="lead">Your presence will grace us with joy on this blessed day. Please let us know by <strong id="rsvpBy">10th November 2026</strong>.</p>
+      <p class="lead">Your presence will grace us with joy on this blessed day.</p>
     </section>
 
     <form id="rsvp" class="card" novalidate>
@@ -80,15 +79,6 @@
             <input name="city" type="text" autocomplete="address-level2" placeholder="e.g. Ahmedabad" />
           </label>
         </div>
-        <div class="field">
-          <span id="sideL">You are joining us as</span>
-          <div class="chips" role="radiogroup" aria-labelledby="sideL">
-            <label><input type="radio" name="side" value="Harsh's family" /><span>Harsh's family</span></label>
-            <label><input type="radio" name="side" value="Harsh's friend" /><span>Harsh's friend</span></label>
-            <label><input type="radio" name="side" value="Stuti's family" /><span>Stuti's family</span></label>
-            <label><input type="radio" name="side" value="Stuti's friend" /><span>Stuti's friend</span></label>
-          </div>
-        </div>
       </fieldset>
 
       <!-- 2 · attending -->
@@ -104,33 +94,15 @@
         <!-- 3 · guests -->
         <fieldset>
           <legend><span class="num">3</span> Guests</legend>
-          <div class="steppers">
-            <div class="stepper">
-              <span id="adL">Adults</span>
-              <div class="stepper__ctl" aria-labelledby="adL">
-                <button type="button" data-step="adults" data-d="-1" aria-label="Fewer adults">−</button>
-                <output id="adultsOut">1</output>
-                <button type="button" data-step="adults" data-d="1" aria-label="More adults">+</button>
-              </div>
-            </div>
-            <div class="stepper">
-              <span id="chL">Children <small>(under 12)</small></span>
-              <div class="stepper__ctl" aria-labelledby="chL">
-                <button type="button" data-step="children" data-d="-1" aria-label="Fewer children">−</button>
-                <output id="childrenOut">0</output>
-                <button type="button" data-step="children" data-d="1" aria-label="More children">+</button>
-              </div>
+          <div class="stepper stepper--inline">
+            <span id="gsL">Number of guests <small>(including you)</small></span>
+            <div class="stepper__ctl" aria-labelledby="gsL">
+              <button type="button" data-step="guests" data-d="-1" aria-label="Fewer guests">−</button>
+              <output id="guestsOut">1</output>
+              <button type="button" data-step="guests" data-d="1" aria-label="More guests">+</button>
             </div>
           </div>
-          <input type="hidden" name="adults" value="1" />
-          <input type="hidden" name="children" value="0" />
-          <label class="field">
-            <span>Names of everyone coming <small>(optional)</small></span>
-            <textarea name="guestNames" rows="2" placeholder="e.g. Rahul Shah, Priya Shah, Aarav (8)"></textarea>
-          </label>
-          <div class="checks checks--small">
-            <label><input type="checkbox" name="assist" value="Yes" /><span><b>Someone needs a little extra care</b><small>Elderly guests, wheelchair access, ground-floor room</small></span></label>
-          </div>
+          <input type="hidden" name="guests" value="1" />
         </fieldset>
 
         <!-- 4 · celebrations -->
@@ -158,7 +130,7 @@
           <div id="ownPart" hidden>
             <div class="grid2">
               <label class="field">
-                <span>Reaching the venue on</span>
+                <span>Arriving at the venue on</span>
                 <select name="ownArriveDate">
                   <option value="">Choose</option>
                   <option>Sat, 28th Nov</option>
@@ -171,7 +143,22 @@
                 <input name="ownArriveTime" type="time" />
               </label>
             </div>
-            <div class="chips">
+            <div class="grid2">
+              <label class="field">
+                <span>Leaving the venue on</span>
+                <select name="ownDepartDate">
+                  <option value="">Choose</option>
+                  <option>Sun, 29th Nov</option>
+                  <option>Mon, 30th Nov</option>
+                  <option>Tue, 1st Dec</option>
+                </select>
+              </label>
+              <label class="field">
+                <span>Around what time</span>
+                <input name="ownDepartTime" type="time" />
+              </label>
+            </div>
+            <div class="chips" id="parkingPart">
               <label><input type="checkbox" name="parking" value="Yes" /><span>I'll need parking for a car</span></label>
             </div>
           </div>
@@ -232,51 +219,6 @@
               <input name="travelRef" type="text" placeholder="e.g. 6E 2131 arriving, AI 805 returning" />
             </label>
           </div>
-        </fieldset>
-
-        <!-- 6 · stay -->
-        <fieldset>
-          <legend><span class="num">6</span> Stay</legend>
-          <div class="field">
-            <span id="stL">Will you need a room at the venue?</span>
-            <div class="chips" role="radiogroup" aria-labelledby="stL">
-              <label><input type="radio" name="stay" value="Yes" /><span>Yes, please</span></label>
-              <label><input type="radio" name="stay" value="No" /><span>No, thank you</span></label>
-            </div>
-          </div>
-          <div id="stayPart" hidden>
-            <div class="stepper stepper--inline">
-              <span id="rmL">Rooms needed</span>
-              <div class="stepper__ctl" aria-labelledby="rmL">
-                <button type="button" data-step="rooms" data-d="-1" aria-label="Fewer rooms">−</button>
-                <output id="roomsOut">1</output>
-                <button type="button" data-step="rooms" data-d="1" aria-label="More rooms">+</button>
-              </div>
-            </div>
-            <input type="hidden" name="rooms" value="1" />
-            <div class="field">
-              <span>Nights</span>
-              <div class="chips">
-                <label><input type="checkbox" name="nights" value="28th Nov" /><span>Sat, 28th Nov</span></label>
-                <label><input type="checkbox" name="nights" value="29th Nov" checked /><span>Sun, 29th Nov</span></label>
-                <label><input type="checkbox" name="nights" value="30th Nov" /><span>Mon, 30th Nov</span></label>
-              </div>
-            </div>
-          </div>
-        </fieldset>
-
-        <!-- 7 · food -->
-        <fieldset>
-          <legend><span class="num">7</span> Food preference</legend>
-          <div class="chips" role="radiogroup" aria-label="Food preference">
-            <label><input type="radio" name="food" value="Jain" /><span>Jain</span></label>
-            <label><input type="radio" name="food" value="Vegetarian" /><span>Vegetarian</span></label>
-            <label><input type="radio" name="food" value="No onion & garlic" /><span>No onion &amp; garlic</span></label>
-          </div>
-          <label class="field">
-            <span>Allergies or anything else we should know <small>(optional)</small></span>
-            <input name="notes" type="text" placeholder="e.g. nut allergy, wheelchair access" />
-          </label>
         </fieldset>
 
         <!-- sangeet -->
