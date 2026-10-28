@@ -17,9 +17,6 @@ const STORE = "hs-wedding-rsvp";
 function sync() {
   const att = F.attending.value;
   $("yesPart").hidden = att !== "yes";
-  $("ownPart").hidden = !["On my own", "Not sure yet"].includes(F.travel.value);
-  $("parkingPart").hidden = F.travel.value !== "On my own";
-  $("delhiPart").hidden = F.travel.value !== "Arrange from Delhi";
   $("sangeetPart").hidden = !values("events").includes("Sangeet");
   $("performPart").hidden = !["Yes", "Maybe"].includes(F.perform.value);
   // number the visible sections in order
@@ -60,28 +57,12 @@ function collect() {
     Object.assign(d, {
       guests: +f.guests.value,
       events: values("events").join(", "),
-      travel: f.travel.value,
     });
-    if (["On my own", "Not sure yet"].includes(f.travel.value)) {
-      Object.assign(d, {
-        ownArrive: [f.ownArriveDate.value, f.ownArriveTime.value].filter(Boolean).join(", "),
-        ownDepart: [f.ownDepartDate.value, f.ownDepartTime.value].filter(Boolean).join(", "),
-        parking: f.travel.value === "On my own" && f.parking.checked ? "Yes" : "",
-      });
-    }
     if (values("events").includes("Sangeet")) {
       Object.assign(d, {
         perform: f.perform.value,
         performWhat: ["Yes", "Maybe"].includes(f.perform.value) ? f.performWhat.value.trim() : "",
         song: f.song.value.trim(),
-      });
-    }
-    if (f.travel.value === "Arrange from Delhi") {
-      Object.assign(d, {
-        arriveMode: f.arriveMode.value,
-        arrive: [f.arriveDate.value, f.arriveTime.value].filter(Boolean).join(", "),
-        depart: [f.returnDate.value, f.returnTime.value].filter(Boolean).join(", "),
-        travelRef: f.travelRef.value.trim(),
       });
     }
   }
@@ -117,9 +98,6 @@ function validate(d) {
 const LABELS = [
   ["name", "Name"], ["phone", "Phone"], ["email", "Email"], ["city", "Coming from"],
   ["attending", "Attending"], ["guests", "Guests"], ["events", "Celebrations"],
-  ["travel", "Travel"], ["ownArrive", "Arriving at venue"], ["ownDepart", "Leaving venue"], ["parking", "Parking"],
-  ["arriveMode", "Arriving by"], ["arrive", "Arrival in Delhi"],
-  ["depart", "Return from Delhi"], ["travelRef", "Flight / train"],
   ["perform", "Performing"], ["performWhat", "Performance"], ["song", "Song request"],
   ["wish", "Wish"],
 ];

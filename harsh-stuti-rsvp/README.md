@@ -8,9 +8,8 @@ A one-page RSVP in the save-the-date's look (rose garland, bells, H & S monogram
 2. Whether they'll join (accept or decline)
 3. Number of guests
 4. Which celebrations: Haldi, Sangeet, Varmala
-5. Travel: travel arranged from Delhi (arrival in Delhi and return dates and times, flight or train numbers), or reaching on their own or not sure yet (arrival at and departure from the venue, dates and times, plus parking)
-6. Sangeet night (if they're coming to it): whether they'd like to perform, what, and a song request
-7. A wish for the couple
+5. Sangeet night (if they're coming to it): whether they'd like to perform, what, and a song request
+6. A wish for the couple
 
 After sending, the RSVP is saved to your Google Sheet and the guest sees a thank-you with a summary of their answers, an optional WhatsApp button, and an "add to calendar" file for the celebrations they chose. Their answers are remembered on their phone so they can edit them later.
 
@@ -34,8 +33,7 @@ Each RSVP is sent to a Google Apps Script web app, which adds it as a row in a G
 3. Paste that URL into `sheetUrl` at the top of `script.js`.
 
 ```js
-const COLS = ["submittedAt","name","phone","email","city","attending","guests","events","travel",
-  "ownArrive","ownDepart","parking","arriveMode","arrive","depart","travelRef",
+const COLS = ["submittedAt","name","phone","email","city","attending","guests","events",
   "perform","performWhat","song","wish"];
 function doPost(e) {
   const sh = SpreadsheetApp.getActiveSpreadsheet().getSheets()[0];
