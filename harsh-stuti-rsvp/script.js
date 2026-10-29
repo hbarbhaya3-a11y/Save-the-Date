@@ -17,6 +17,7 @@ const STORE = "hs-wedding-rsvp";
 function sync() {
   const att = F.attending.value;
   $("yesPart").hidden = att !== "yes";
+  $("dressPart").hidden = att !== "yes";
   // number the visible sections in order
   let n = 0;
   form.querySelectorAll("fieldset").forEach((fs) => {

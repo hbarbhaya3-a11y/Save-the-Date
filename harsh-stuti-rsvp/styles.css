@@ -213,3 +213,5 @@ input[type=email] { width: 100%; min-height: 48px; font: 500 17px var(--serif); 
 #yesPart .dress { margin: 0; padding: 18px 0 6px; border-top: 1px solid rgba(176, 138, 78, .25); }
 #yesPart .dress__list li:last-child { padding-bottom: 6px; }
 #yesPart .dress + fieldset { border-top: 1px solid rgba(176, 138, 78, .25); padding-top: 18px; }
+#dressPart { margin: 0 0 18px; padding: 18px 0 0; border-top: 1px solid rgba(176, 138, 78, .25); }
+#dressPart .dress__list li:last-child { border-bottom: 1px solid rgba(176, 138, 78, .25); }

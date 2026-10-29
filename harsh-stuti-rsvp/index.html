@@ -105,34 +105,6 @@
       </fieldset>
 
       <div id="yesPart" hidden>
-        <section class="dress" aria-labelledby="dressT">
-          <p class="dress__kicker">Dress code</p>
-          <h2 class="dress__title" id="dressT">What to wear</h2>
-          <p class="dress__sub">A gentle nudge, not a rulebook. Come as you are, just comfy enough to celebrate all day!</p>
-          <ul class="dress__list">
-            <li>
-              <div>
-                <p class="dress__ev">Haldi <span class="tag tag--out">Outdoors</span></p>
-                <p class="dress__vibe">Sunny vibes</p>
-                <p class="dress__txt">Bright, breezy and easy to move in, so you can soak up the winter sun in comfort. It might get a little yellow, so wear something you won't mind!</p>
-              </div>
-            </li>
-            <li>
-              <div>
-                <p class="dress__ev">Sangeet <span class="tag tag--in">Indoors · heated</span></p>
-                <p class="dress__vibe">Dance-floor ready</p>
-                <p class="dress__txt">Ethnic Indian you can dance freely in, twirls very much encouraged. We'll keep you warm with indoor heating, so leave the heavy shawl at your seat.</p>
-              </div>
-            </li>
-            <li>
-              <div>
-                <p class="dress__ev">Wedding</p>
-                <p class="dress__vibe">Your palette, your rules</p>
-                <p class="dress__txt">Ethnic Indian in whichever colours make you happiest. Go bold, go pastel, go all out. It's your call!</p>
-              </div>
-            </li>
-          </ul>
-        </section>
         <!-- 3 · guests -->
         <fieldset>
           <legend><span class="num">3</span> Guests</legend>
@@ -168,6 +140,34 @@
         </label>
       </fieldset>
 
+      <section class="dress" id="dressPart" aria-labelledby="dressT" hidden>
+        <p class="dress__kicker">Dress code</p>
+        <h2 class="dress__title" id="dressT">What to wear</h2>
+        <p class="dress__sub">A gentle nudge, not a rulebook. Come as you are, just comfy enough to celebrate all day!</p>
+        <ul class="dress__list">
+          <li>
+            <div>
+              <p class="dress__ev">Haldi <span class="tag tag--out">Outdoors</span></p>
+              <p class="dress__vibe">Sunny vibes</p>
+              <p class="dress__txt">Bright, breezy and easy to move in, so you can soak up the winter sun in comfort. It might get a little yellow, so wear something you won't mind!</p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <p class="dress__ev">Sangeet <span class="tag tag--in">Indoors</span></p>
+              <p class="dress__vibe">Dance-floor ready</p>
+              <p class="dress__txt">Ethnic Indian you can dance freely in, twirls very much encouraged. We'll keep you warm with indoor heating, so leave the heavy shawl at your seat.</p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <p class="dress__ev">Wedding <span class="tag tag--out">Outdoors</span></p>
+              <p class="dress__vibe">Your palette, your rules</p>
+              <p class="dress__txt">Ethnic Indian in whichever colours make you happiest. Go bold, go pastel, go all out. It's your call!</p>
+            </div>
+          </li>
+        </ul>
+      </section>
       <p class="err" id="err" role="alert" hidden></p>
       <button class="submit" type="submit">Send RSVP</button>
     </form>
