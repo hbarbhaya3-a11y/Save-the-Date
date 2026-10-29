@@ -189,3 +189,18 @@ input[type=email] { width: 100%; min-height: 48px; font: 500 17px var(--serif); 
 .rule span:last-child { background: linear-gradient(90deg, var(--gold-soft), rgba(176, 138, 78, 0)); }
 .rule .dia { width: 5px; height: 5px; background: var(--gold-soft); transform: rotate(45deg); flex: none; }
 .rule .lotus { width: 54px; height: auto; flex: none; overflow: visible; }
+
+/* dress code card */
+.dress { margin-bottom: 20px; text-align: center; }
+.dress__kicker { font: 500 12px var(--caps); letter-spacing: .32em; text-transform: uppercase; color: var(--gold); margin: 4px 0 0; }
+.dress__title { font: 400 44px/1.15 var(--script); color: var(--maroon); margin: 0; }
+.dress__sub { font-style: italic; color: var(--rose); margin: 2px auto 16px; max-width: 380px; font-size: 17px; }
+.dress__list { list-style: none; margin: 0; padding: 0; text-align: left; display: grid; gap: 0; }
+.dress__list li { display: grid; grid-template-columns: 40px 1fr; gap: 12px; padding: 14px 2px; border-top: 1px solid rgba(176, 138, 78, .25); }
+.dress__icon { width: 34px; height: 34px; color: var(--gold); margin-top: 4px; }
+.dress__ev { margin: 0; font: 600 13px var(--caps); letter-spacing: .16em; text-transform: uppercase; color: var(--maroon); display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.dress__vibe { margin: 2px 0 2px; font: 400 27px/1.2 var(--script); color: var(--maroon); }
+.dress__txt { margin: 0; font-size: 16.5px; line-height: 1.45; color: var(--ink); }
+.tag { font: 600 11px var(--serif); letter-spacing: .08em; text-transform: uppercase; padding: 3px 9px; border-radius: 999px; border: 1px solid; }
+.tag--out { color: #8a5a12; border-color: #e2c27d; background: #fdf3dc; }
+.tag--in { color: var(--maroon); border-color: rgba(107, 22, 34, .3); background: #fbefe6; }

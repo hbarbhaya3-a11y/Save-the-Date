@@ -70,6 +70,38 @@
       <p class="lead">Your presence will grace us with joy on this blessed day.</p>
     </section>
 
+    <section class="card dress" aria-labelledby="dressT">
+      <p class="dress__kicker">Dress code</p>
+      <h2 class="dress__title" id="dressT">What to wear</h2>
+      <p class="dress__sub">A gentle nudge, not a rulebook. Come as you are, just comfy enough to celebrate all day!</p>
+      <ul class="dress__list">
+        <li>
+          <svg class="dress__icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="16" cy="16" r="5.5"/><path d="M16 3v4M16 25v4M3 16h4M25 16h4M6.8 6.8l2.8 2.8M22.4 22.4l2.8 2.8M6.8 25.2l2.8-2.8M22.4 9.6l2.8-2.8"/></svg>
+          <div>
+            <p class="dress__ev">Haldi <span class="tag tag--out">Outdoors</span></p>
+            <p class="dress__vibe">Sunny vibes</p>
+            <p class="dress__txt">Bright, breezy and easy to move in, so you can soak up the winter sun in comfort. It might get a little yellow, so wear something you won't mind!</p>
+          </div>
+        </li>
+        <li>
+          <svg class="dress__icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 23V8l13-3v15"/><circle cx="9" cy="23" r="3"/><circle cx="22" cy="20" r="3"/><path d="M12 12l13-3"/></svg>
+          <div>
+            <p class="dress__ev">Sangeet <span class="tag tag--in">Indoors · heated</span></p>
+            <p class="dress__vibe">Dance-floor ready</p>
+            <p class="dress__txt">Ethnic Indian you can dance freely in, twirls very much encouraged. We'll keep you warm with indoor heating, so leave the heavy shawl at your seat.</p>
+          </div>
+        </li>
+        <li>
+          <svg class="dress__icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M16 5c-3 4-3 9 0 13 3-4 3-9 0-13z"/><path d="M15 17c-3.5-1-6.5-4-7-9 3.5 1 6 3.5 7 7M17 17c3.5-1 6.5-4 7-9-3.5 1-6 3.5-7 7"/><path d="M14.5 18.5C10 19 6 17 3 13c4.5-.5 8.5 1 11 4.5M17.5 18.5c4.5.5 8.5-1.5 11.5-5.5-4.5-.5-8.5 1-11 4.5"/><path d="M9 24c4.5-1.5 9.5-1.5 14 0"/></svg>
+          <div>
+            <p class="dress__ev">Wedding</p>
+            <p class="dress__vibe">Your palette, your rules</p>
+            <p class="dress__txt">Ethnic Indian in whichever colours make you happiest. Go bold, go pastel, go all out. It's your call!</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+
     <form id="rsvp" class="card" novalidate>
       <!-- 1 · about you -->
       <fieldset>
@@ -128,26 +160,6 @@
           </div>
         </fieldset>
 
-        <!-- sangeet -->
-        <fieldset id="sangeetPart">
-          <legend><span class="num">8</span> Sangeet night</legend>
-          <div class="field">
-            <span id="pfL">Would you like to perform?</span>
-            <div class="chips" role="radiogroup" aria-labelledby="pfL">
-              <label><input type="radio" name="perform" value="Yes" /><span>Yes, count me in!</span></label>
-              <label><input type="radio" name="perform" value="Maybe" /><span>Maybe</span></label>
-              <label><input type="radio" name="perform" value="No" /><span>I'll cheer</span></label>
-            </div>
-          </div>
-          <label class="field" id="performPart" hidden>
-            <span>What would you like to perform?</span>
-            <input name="performWhat" type="text" placeholder="e.g. group dance with the Shah family" />
-          </label>
-          <label class="field">
-            <span>A song that will get you on the dance floor <small>(optional)</small></span>
-            <input name="song" type="text" placeholder="e.g. London Thumakda" />
-          </label>
-        </fieldset>
       </div>
 
       <!-- wishes -->

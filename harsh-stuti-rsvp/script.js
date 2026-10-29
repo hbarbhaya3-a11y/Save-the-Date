@@ -17,8 +17,6 @@ const STORE = "hs-wedding-rsvp";
 function sync() {
   const att = F.attending.value;
   $("yesPart").hidden = att !== "yes";
-  $("sangeetPart").hidden = !values("events").includes("Sangeet");
-  $("performPart").hidden = !["Yes", "Maybe"].includes(F.perform.value);
   // number the visible sections in order
   let n = 0;
   form.querySelectorAll("fieldset").forEach((fs) => {
@@ -58,13 +56,6 @@ function collect() {
       guests: +f.guests.value,
       events: values("events").join(", "),
     });
-    if (values("events").includes("Sangeet")) {
-      Object.assign(d, {
-        perform: f.perform.value,
-        performWhat: ["Yes", "Maybe"].includes(f.perform.value) ? f.performWhat.value.trim() : "",
-        song: f.song.value.trim(),
-      });
-    }
   }
   return d;
 }
@@ -98,7 +89,6 @@ function validate(d) {
 const LABELS = [
   ["name", "Name"], ["phone", "Phone"], ["email", "Email"], ["city", "Coming from"],
   ["attending", "Attending"], ["guests", "Guests"], ["events", "Celebrations"],
-  ["perform", "Performing"], ["performWhat", "Performance"], ["song", "Song request"],
   ["wish", "Wish"],
 ];
 const rows = (d) => LABELS.filter(([k]) => d[k] !== undefined && d[k] !== "");
