@@ -208,3 +208,8 @@ input[type=email] { width: 100%; min-height: 48px; font: 500 17px var(--serif); 
 .dress__ev { justify-content: center; }
 .dress__txt { max-width: 400px; margin: 0 auto; }
 .dress__txt, .dress__sub { text-wrap: balance; }
+
+/* dress code shown inside the form, right after "Accepts with pleasure" */
+#yesPart .dress { margin: 0; padding: 18px 0 6px; border-top: 1px solid rgba(176, 138, 78, .25); }
+#yesPart .dress__list li:last-child { padding-bottom: 6px; }
+#yesPart .dress + fieldset { border-top: 1px solid rgba(176, 138, 78, .25); padding-top: 18px; }
