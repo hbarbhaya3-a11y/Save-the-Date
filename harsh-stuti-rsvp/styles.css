@@ -204,3 +204,7 @@ input[type=email] { width: 100%; min-height: 48px; font: 500 17px var(--serif); 
 .tag { font: 600 11px var(--serif); letter-spacing: .08em; text-transform: uppercase; padding: 3px 9px; border-radius: 999px; border: 1px solid; }
 .tag--out { color: #8a5a12; border-color: #e2c27d; background: #fdf3dc; }
 .tag--in { color: var(--maroon); border-color: rgba(107, 22, 34, .3); background: #fbefe6; }
+.dress__list li { grid-template-columns: 1fr; gap: 0; text-align: center; }
+.dress__ev { justify-content: center; }
+.dress__txt { max-width: 400px; margin: 0 auto; }
+.dress__txt, .dress__sub { text-wrap: balance; }
