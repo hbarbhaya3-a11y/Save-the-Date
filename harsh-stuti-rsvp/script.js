@@ -3,9 +3,6 @@ const CONFIG = {
   // Google Apps Script web-app URL that saves each RSVP as a row in your Google Sheet
   // (same set-up as the engagement RSVP; see README).
   sheetUrl: "https://script.google.com/macros/s/AKfycbzZXDU5l-MeGdk7oNYMqITK2tpBz20ya2mNC77i2_qQ-Nf35XKeJoWxWLZTMrhEwYypoA/exec",
-  // Optional WhatsApp number, country code first, digits only (e.g. "919812345678").
-  // When set, guests also get a "send on WhatsApp" button. With no sheet, the button is always shown.
-  whatsappNumber: "",
 };
 
 const $ = (id) => document.getElementById(id);
@@ -86,20 +83,6 @@ function validate(d) {
   return true;
 }
 
-/* ---------------- labels for the summary and WhatsApp ---------------- */
-const LABELS = [
-  ["name", "Name"], ["phone", "Phone"], ["email", "Email"], ["city", "Coming from"],
-  ["attending", "Attending"], ["guests", "Guests"], ["events", "Celebrations"],
-  ["wish", "Wish"],
-];
-const rows = (d) => LABELS.filter(([k]) => d[k] !== undefined && d[k] !== "");
-
-function waText(d) {
-  const lines = ["*RSVP · Harsh & Stuti's wedding* 💍", ""];
-  rows(d).forEach(([k, l]) => lines.push(`*${l}:* ${d[k]}`));
-  return lines.join("\n");
-}
-
 /* ---------------- submit ---------------- */
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -121,30 +104,16 @@ form.addEventListener("submit", async (e) => {
 
 function showThanks(d) {
   const yes = d.attending === "Yes";
-  const first = d.name.split(" ")[0], n = d.guests;
+  const first = d.name.split(" ")[0];
   $("thanksTitle").textContent = yes ? `Thank you, ${first}!` : `We'll miss you, ${first}`;
   $("thanksMsg").textContent = yes
-    ? `We've saved a spot for ${n} ${n === 1 ? "guest" : "guests"}. Can't wait to celebrate with you.`
+    ? "We can't wait to celebrate with you."
     : "Thank you for letting us know. Your blessings will be with us on the day.";
-  $("summary").innerHTML = "";
-  rows(d).forEach(([k, l]) => {
-    const r = document.createElement("div"), dt = document.createElement("dt"), dd = document.createElement("dd");
-    dt.textContent = l; dd.textContent = d[k]; r.append(dt, dd); $("summary").append(r);
-  });
-  $("waBtn").href = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(waText(d))}`;
-  $("waBtn").textContent = CONFIG.sheetUrl ? "Also send on WhatsApp" : "Send my RSVP on WhatsApp";
-  $("waBtn").hidden = !!CONFIG.sheetUrl && !CONFIG.whatsappNumber;
-  $("calBtn").hidden = !yes;
   form.hidden = true;
   $("thanks").hidden = false;
   $("thanks").scrollIntoView({ behavior: "smooth", block: "start" });
   $("thanks").focus({ preventScroll: true });
 }
-
-$("editBtn").addEventListener("click", () => {
-  $("thanks").hidden = true; form.hidden = false;
-  form.scrollIntoView({ behavior: "smooth", block: "start" });
-});
 
 /* ---------------- remember a draft on this device ---------------- */
 function saveState() {
@@ -171,24 +140,3 @@ function loadState() {
 }
 loadState();
 sync();
-
-/* ---------------- add to calendar (.ics) ---------------- */
-const EVENTS = [
-  ["Haldi", "20261129T043000Z", "20261129T073000Z"],
-  ["Sangeet", "20261129T133000Z", "20261129T173000Z"],
-  ["Varmala", "20261130T053000Z", "20261130T093000Z"],
-];
-$("calBtn").addEventListener("click", () => {
-  const chosen = collect().events || "";
-  const stamp = new Date().toISOString().replace(/[-:]|\.\d+/g, "");
-  const ics = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Harsh & Stuti//Wedding//EN", "CALSCALE:GREGORIAN"];
-  EVENTS.filter(([n]) => chosen.includes(n)).forEach(([n, s, e]) => ics.push(
-    "BEGIN:VEVENT", `UID:${n.toLowerCase()}-harsh-stuti-2026@save-the-date`, `DTSTAMP:${stamp}`,
-    `DTSTART:${s}`, `DTEND:${e}`, `SUMMARY:${n} · Harsh & Stuti's wedding`,
-    "LOCATION:Moolchand Resort\\, Muzaffarnagar", "DESCRIPTION:https://maps.google.com/?q=Moolchand+Resort+Muzaffarnagar", "END:VEVENT"));
-  ics.push("END:VCALENDAR");
-  const a = document.createElement("a");
-  a.href = URL.createObjectURL(new Blob([ics.join("\r\n")], { type: "text/calendar" }));
-  a.download = "Harsh-Stuti-wedding.ics";
-  document.body.append(a); a.click(); a.remove();
-});

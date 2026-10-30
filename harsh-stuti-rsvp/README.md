@@ -10,18 +10,16 @@ A one-page RSVP in the save-the-date's look (rose garland, bells, H & S monogram
 4. Which celebrations: Haldi, Sangeet, Varmala
 5. A wish for the couple
 
-After sending, the RSVP is saved to your Google Sheet and the guest sees a thank-you with a summary of their answers, an optional WhatsApp button, and an "add to calendar" file for the celebrations they chose. Their answers are remembered on their phone so they can edit them later.
+After sending, the RSVP is saved to the Google Sheet and the guest sees a short thank-you.
 
 ## Settings (top of `script.js`)
 
 ```js
 const CONFIG = {
   sheetUrl: "",         // Google Sheet web-app URL (below)
-  whatsappNumber: "",   // optional, e.g. "919812345678"
 };
 ```
 
-With a sheet set, the WhatsApp button only shows if you add a number.
 
 ## Saving RSVPs to a Google Sheet (same set-up as the engagement RSVP)
 
@@ -42,4 +40,3 @@ function doPost(e) {
 }
 ```
 
-Until `sheetUrl` is set, guests send their RSVP through the WhatsApp button instead.
