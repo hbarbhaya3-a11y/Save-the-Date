@@ -2,7 +2,7 @@
 const CONFIG = {
   // Google Apps Script web-app URL that saves each RSVP as a row in your Google Sheet
   // (same set-up as the engagement RSVP; see README).
-  sheetUrl: "",
+  sheetUrl: "https://script.google.com/macros/s/AKfycbzZXDU5l-MeGdk7oNYMqITK2tpBz20ya2mNC77i2_qQ-Nf35XKeJoWxWLZTMrhEwYypoA/exec",
   // Optional WhatsApp number, country code first, digits only (e.g. "919812345678").
   // When set, guests also get a "send on WhatsApp" button. With no sheet, the button is always shown.
   whatsappNumber: "",
