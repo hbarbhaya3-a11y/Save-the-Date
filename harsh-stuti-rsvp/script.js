@@ -44,8 +44,6 @@ function collect() {
   const d = {
     name: f.name.value.trim(),
     phone: f.phone.value.trim(),
-    email: f.email.value.trim(),
-    city: f.city.value.trim(),
     attending: yes ? "Yes" : f.attending.value === "no" ? "No" : "",
     wish: f.wish.value.trim(),
   };

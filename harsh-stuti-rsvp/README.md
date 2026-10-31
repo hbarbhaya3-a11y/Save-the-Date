@@ -4,7 +4,7 @@ Live: https://hbarbhaya3-a11y.github.io/Save-the-Date/harsh-stuti-rsvp/
 
 A one-page RSVP in the save-the-date's look (rose garland, bells, H & S monogram), with a dress-code card for each celebration. Guests fill in:
 
-1. About you: name, WhatsApp number, email (optional), city they're coming from
+1. About you: name and WhatsApp number
 2. Whether they'll join (accept or decline)
 3. Number of guests
 4. Which celebrations: Haldi, Sangeet, Varmala
@@ -30,7 +30,7 @@ Each RSVP is sent to a Google Apps Script web app, which adds it as a row in a G
 3. Paste that URL into `sheetUrl` at the top of `script.js`.
 
 ```js
-const COLS = ["submittedAt","name","phone","email","city","attending","guests","events","wish"];
+const COLS = ["submittedAt","name","phone","attending","guests","events","wish"];
 function doPost(e) {
   const sh = SpreadsheetApp.getActiveSpreadsheet().getSheets()[0];
   if (sh.getLastRow() === 0) sh.appendRow(COLS);
