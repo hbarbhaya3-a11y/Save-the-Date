@@ -49,11 +49,11 @@ fit();
 function buildText() {
   $("monthName").textContent = MONTHS[CONFIG.month - 1];
   $("yearName").textContent = CONFIG.year;
-  $("coupleNames").innerHTML = `${CONFIG.groom}<span class="amp">&amp;</span>${CONFIG.bride}`;
+  $("coupleNames").innerHTML = `${CONFIG.bride}<span class="amp">&amp;</span>${CONFIG.groom}`;
   document.querySelector(".logo__H").textContent = CONFIG.initials[0];
   document.querySelector(".logo__S").textContent = CONFIG.initials[1];
-  document.querySelector(".logo__names").textContent = `${CONFIG.groom} & ${CONFIG.bride}`;
-  document.title = `Save the Date · ${CONFIG.groom} & ${CONFIG.bride}`;
+  document.querySelector(".logo__names").textContent = `${CONFIG.bride} & ${CONFIG.groom}`;
+  document.title = `Save the Date · ${CONFIG.bride} & ${CONFIG.groom}`;
 }
 
 /* Letters of "Save the Date" laid out on an arc */
@@ -220,9 +220,106 @@ function reset() {
 }
 
 function setPos(n) {
-  stage.classList.remove("pos-1", "pos-2", "pos-3", "pos-4", "pos-5");
+  stage.classList.remove("pos-1", "pos-2", "pos-3", "pos-4", "pos-5", "pos-6");
   stage.classList.add(`pos-${n}`);
 }
+
+
+/* ---------------- Haldi page artwork (drawn once) ---------------- */
+const MARIGOLD = ["#f28c28", "#f7c531", "#e8447a", "#ef6b1f", "#f9d548", "#d9343a"];
+const SVGNS = "http://www.w3.org/2000/svg";
+function svgEl(tag, attrs, parent) {
+  const el = document.createElementNS(SVGNS, tag);
+  Object.entries(attrs).forEach(([k, v]) => el.setAttribute(k, v));
+  if (parent) parent.appendChild(el);
+  return el;
+}
+// a string of marigolds along a quadratic curve
+function strand(parent, x1, y1, cx, cy, x2, y2, r, gap, shift) {
+  const g = svgEl("g", {}, parent);
+  const len = Math.hypot(x2 - x1, y2 - y1) + Math.abs(cy - (y1 + y2) / 2);
+  const n = Math.max(2, Math.round(len / gap));
+  for (let i = 0; i <= n; i++) {
+    const t = i / n, u = 1 - t;
+    const x = u * u * x1 + 2 * u * t * cx + t * t * x2;
+    const y = u * u * y1 + 2 * u * t * cy + t * t * y2;
+    if (i % 2) svgEl("circle", { cx: x, cy: y, r: r * .35, fill: "#d9a441" }, g);
+    else {
+      const c = MARIGOLD[(i / 2 + shift) % MARIGOLD.length];
+      svgEl("circle", { cx: x, cy: y, r, fill: c }, g);
+      svgEl("circle", { cx: x - r * .25, cy: y - r * .25, r: r * .45, fill: "rgba(255,255,255,.28)" }, g);
+    }
+  }
+  return g;
+}
+function buildHaldi() {
+  const gl = $("hdGarland");
+  if (gl.childElementCount) return;
+  // two swags of four strands, one centre drop and side hangings
+  [[16, 270], [270, 524]].forEach(([a, b], k) => {
+    [34, 62, 92, 124].forEach((sag, i) => strand(gl, a, 6, (a + b) / 2, 6 + sag * 2, b, 6, 5.2, 6.4, i + k * 2));
+  });
+  strand(gl, 270, 4, 270, 120, 270, 236, 5.6, 6.6, 3);
+  [["#f7c531", 270, 248], ["#e8447a", 262, 256], ["#5c9a3c", 278, 256]].forEach(([f, x, y]) => svgEl("circle", { cx: x, cy: y, r: 7, fill: f }, gl));
+  [[22, 6, 22, 190], [44, 6, 44, 150], [518, 6, 518, 190], [496, 6, 496, 150]].forEach(([x1, y1, x2, y2], i) =>
+    strand(gl, x1, y1, x1, (y1 + y2) / 2, x2, y2, 5, 6.2, i));
+
+  // turmeric pots spilling marigold strands
+  const pot = (id, body, band, spill) => {
+    const p = $(id);
+    const grad = svgEl("linearGradient", { id: id + "G", x1: "0", y1: "0", x2: "1", y2: "0" }, svgEl("defs", {}, p));
+    [[0, body[0]], [.55, body[1]], [1, body[2]]].forEach(([o, c]) => svgEl("stop", { offset: o, "stop-color": c }, grad));
+    svgEl("path", { d: "M44 60C10 82 4 150 30 190C48 216 122 216 140 190C166 150 160 82 126 60Z", fill: `url(#${id}G)` }, p);
+    svgEl("ellipse", { cx: 85, cy: 58, rx: 50, ry: 16, fill: body[2] }, p);
+    svgEl("ellipse", { cx: 85, cy: 56, rx: 40, ry: 11, fill: "#5b2a12", opacity: ".75" }, p);
+    for (let i = 0; i < 14; i++) svgEl("circle", { cx: 28 + i * 8.4, cy: 110 + Math.sin(i / 13 * Math.PI) * 10, r: 2.2, fill: band }, p);
+    spill.forEach(([x, y2], i) => strand(p, x, 52, x + (i % 2 ? 6 : -6), (52 + y2) / 2, x + (i % 2 ? 2 : -2), y2, 6.4, 7, i));
+  };
+  pot("hdPotL", ["#f6b43a", "#fbd36b", "#e48a1d"], "#fff3d6", [[64, 176], [86, 196], [108, 170]]);
+  pot("hdPotR", ["#e23d8f", "#f37ab4", "#b81f6b"], "#fde6f1", [[62, 172], [84, 194], [106, 178]]);
+  pot("hdPotLS", ["#e23d8f", "#f37ab4", "#b81f6b"], "#fde6f1", [[72, 150], [100, 164]]);
+  pot("hdPotRS", ["#f6b43a", "#fbd36b", "#e48a1d"], "#fff3d6", [[70, 158], [98, 146]]);
+
+  // festive umbrellas (chhatri)
+  const umb = (id, main, alt) => {
+    const u = $(id);
+    svgEl("path", { d: "M60 20V146", stroke: "#a0692a", "stroke-width": 3, "stroke-linecap": "round" }, u);
+    svgEl("path", { d: "M8 62C14 30 36 14 60 14C84 14 106 30 112 62Z", fill: main }, u);
+    for (let i = 0; i < 6; i++) svgEl("path", { d: `M60 14L${16 + i * 18} 62`, stroke: alt, "stroke-width": 1.4, opacity: ".7" }, u);
+    svgEl("path", { d: "M8 62H112", stroke: "#f3c74a", "stroke-width": 5 }, u);
+    for (let i = 0; i < 11; i++) svgEl("path", { d: `M${12 + i * 9.6} 64v9`, stroke: alt, "stroke-width": 2.4, "stroke-linecap": "round" }, u);
+    for (let i = 0; i < 5; i++) svgEl("circle", { cx: 22 + i * 19, cy: 46, r: 3.4, fill: "#f9e7a8" }, u);
+    svgEl("circle", { cx: 60, cy: 11, r: 5, fill: "#f3c74a" }, u);
+  };
+  umb("hdUmbL", "#e2407f", "#f7a33a");
+  umb("hdUmbR", "#f08a24", "#e2407f");
+
+  // brass bowl of haldi with marigolds around it
+  const bw = $("hdBowl");
+  const bg = svgEl("linearGradient", { id: "hdBowlG", x1: "0", y1: "0", x2: "1", y2: "0" }, svgEl("defs", {}, bw));
+  [[0, "#b77f26"], [.5, "#f1cd6c"], [1, "#a8711f"]].forEach(([o, c]) => svgEl("stop", { offset: o, "stop-color": c }, bg));
+  svgEl("path", { d: "M28 40C34 70 64 82 100 82C136 82 166 70 172 40Z", fill: "url(#hdBowlG)" }, bw);
+  svgEl("ellipse", { cx: 100, cy: 40, rx: 72, ry: 12, fill: "#c99436" }, bw);
+  svgEl("ellipse", { cx: 100, cy: 39, rx: 62, ry: 8.5, fill: "#f2b51c" }, bw);
+  svgEl("ellipse", { cx: 92, cy: 37, rx: 26, ry: 3.4, fill: "#ffd84d", opacity: ".8" }, bw);
+  [[22, 46], [178, 46], [42, 30], [158, 30], [100, 28]].forEach(([x, y], i) => {
+    svgEl("circle", { cx: x, cy: y, r: 9, fill: MARIGOLD[i % 4] }, bw);
+    svgEl("circle", { cx: x - 2, cy: y - 2, r: 4, fill: "rgba(255,255,255,.3)" }, bw);
+  });
+
+  // marigold petals that drift down at the end
+  const petals = $("hdPetals");
+  for (let i = 0; i < 18; i++) {
+    const d = document.createElement("i");
+    d.style.left = (4 + (i * 53) % 92) + "%";
+    d.style.background = MARIGOLD[i % MARIGOLD.length];
+    d.style.animationDelay = (i * 0.37 % 4.2).toFixed(2) + "s";
+    d.style.animationDuration = (6 + (i * 1.7) % 3.5).toFixed(2) + "s";
+    petals.appendChild(d);
+  }
+}
+const HALDI_IDS = ["hdGarland", "hdLotus", "hdTitle", "hdOf", "hdNames", "hdBless", "hdDate", "hdTime", "hdFlourish",
+  "hdUmbL", "hdUmbR", "hdPotL", "hdPotR", "hdPotLS", "hdPotRS", "hdBowl", "hdPetals"];
 
 function play() {
   reset();
@@ -232,6 +329,10 @@ function play() {
   requestAnimationFrame(() => stage.classList.remove("no-anim"));
   $("scene1").classList.remove("leaving");
   $("sceneEv").classList.remove("is-active", "leaving");
+  buildHaldi();
+  $("sceneHaldi").classList.remove("is-active");
+  HALDI_IDS.forEach((id) => $(id).classList.remove("in"));
+  document.querySelectorAll(".hd-bell").forEach((b) => b.classList.remove("in"));
   ["evTitle", "ev1", "ev2", "ev3"].forEach((id) => $(id).classList.remove("in"));
   ["dtStd", "dtDates", "dtRule1", "dtVenueL", "dtVenue", "dtBless"].forEach((id) => $(id).classList.remove("in"));
   const music = $("music");
@@ -242,7 +343,7 @@ function play() {
   const heart = $("heart");
   const labelChars = [...$("weddingLabel").children];
 
-  /* ---- Page 1: logo, Save the Date, for the wedding of Harsh & Stuti ---- */
+  /* ---- Page 1: logo, Save the Date, for the wedding of Stuti & Harsh ---- */
   $("scene1").classList.remove("is-active");
   $("scene2").classList.add("is-active");
   ["p1WedOf", "p1Names"].forEach((id) => $(id).classList.remove("in", "out"));
@@ -318,7 +419,24 @@ function play() {
   ["dtStd", "dtDates", "dtRule1", "dtVenueL", "dtVenue"].forEach((id, i) => at(25.0 + i * 0.35, () => $(id).classList.add("in")));
   ["evTitle", "ev1", "ev2", "ev3"].forEach((id, i) => at(26.9 + i * 0.6, () => $(id).classList.add("in")));
   at(29.4, () => $("dtBless").classList.add("in"));
-  at(35.0, () => {
+  // Haldi page: everything arrives one piece at a time
+  at(35.0, () => { $("sceneEv").classList.add("leaving"); setPos(6); });
+  at(35.4, () => $("sceneHaldi").classList.add("is-active"));
+  at(36.3, () => { $("sceneEv").classList.remove("is-active", "leaving"); });
+  at(36.2, () => $("hdGarland").classList.add("in"));
+  at(37.2, () => document.querySelectorAll(".hd-bell").forEach((b) => b.classList.add("in")));
+  at(37.8, () => $("hdLotus").classList.add("in"));
+  at(38.4, () => $("hdTitle").classList.add("in"));
+  at(39.8, () => $("hdOf").classList.add("in"));
+  at(40.3, () => $("hdNames").classList.add("in"));
+  at(41.7, () => $("hdBless").classList.add("in"));
+  at(42.5, () => $("hdDate").classList.add("in"));
+  at(43.1, () => $("hdTime").classList.add("in"));
+  at(43.6, () => $("hdFlourish").classList.add("in"));
+  [["hdPotL", 44.0], ["hdPotR", 44.3], ["hdPotLS", 44.7], ["hdPotRS", 45.0], ["hdUmbL", 45.4], ["hdUmbR", 45.7], ["hdBowl", 46.1]]
+    .forEach(([id, t]) => at(t, () => $(id).classList.add("in")));
+  at(46.6, () => $("hdPetals").classList.add("in"));
+  at(52.0, () => {
     if (CONFIG.loop) play();
     else $("replayBtn").classList.add("show");
   });
