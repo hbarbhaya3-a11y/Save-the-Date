@@ -1,4 +1,4 @@
-# Harsh & Stuti · Wedding RSVP
+# Stuti & Harsh · Wedding RSVP
 
 Live: https://hbarbhaya3-a11y.github.io/Save-the-Date/harsh-stuti-rsvp/
 
